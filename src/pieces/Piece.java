@@ -1,6 +1,10 @@
 package pieces;
 
 
-public class Piece {
-	
+public abstract class Piece {
+	protected Team team;
+
+	public Piece(Team team){
+		this.team=team;
+	}
 }
