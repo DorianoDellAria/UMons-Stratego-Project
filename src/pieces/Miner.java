@@ -1,12 +1,12 @@
 package pieces;
 
-public class Spy extends Piece implements Movable {
-	protected final int VALUE=1;
+public class Miner extends Piece implements Movable{
 
-	public Spy(Team team){
+	protected final int VALUE= 3;
+
+	public Miner(Team team){
 		super(team);
 	}
-
 
 	@Override
 	public void move(Direction direction) {
@@ -15,7 +15,7 @@ public class Spy extends Piece implements Movable {
 
 	@Override
 	public Piece fight(Piece defense) {
-		if(defense.getVALUE()==10){
+		if(defense.getVALUE()==11){
 			return this;
 		}
 		else{

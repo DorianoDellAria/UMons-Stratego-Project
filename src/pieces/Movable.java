@@ -5,5 +5,5 @@ package pieces;
  */
 public interface Movable {
 	public void move(Direction direction);
-	public Piece fight(Piece defense);
+	//public Piece fight(Piece defense);
 }

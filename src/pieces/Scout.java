@@ -1,7 +1,7 @@
 package pieces;
 
 public class Scout extends Piece implements Movable{
-	private int value=2;
+	protected final int VALUE=2;
 
 	public Scout(Team team){
 		super(team);
@@ -19,7 +19,7 @@ public class Scout extends Piece implements Movable{
 	}
 
 	@Override
-	public Piece fight(Piece defense) {
-		return null;
+	public int getVALUE(){
+		return this.VALUE;
 	}
 }

@@ -1,9 +1,10 @@
 package pieces;
 
-public class Flag extends Piece{
-	protected final int VALUE=0;
+public class Bomb extends Piece {
 
-	public Flag(Team team){
+	protected final int VALUE = 11;
+
+	public Bomb(Team team){
 		super(team);
 	}
 
@@ -11,5 +12,4 @@ public class Flag extends Piece{
 	public int getVALUE(){
 		return this.VALUE;
 	}
-
 }
