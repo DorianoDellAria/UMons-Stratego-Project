@@ -1,9 +1,11 @@
 package pieces;
 
+import board.*;
+
 /**
  * @author D.Dell'Aria
  */
 public interface Movable {
-	public void move(Direction direction);
+	public void move(Board b, int x, int y,Direction direction);
 	//public Piece fight(Piece defense);
 }

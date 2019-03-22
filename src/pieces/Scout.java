@@ -1,5 +1,6 @@
 package pieces;
 
+import board.*;
 
 public class Scout extends AbstractMovable implements Movable{
 	private final int VALUE=2;
@@ -10,9 +11,9 @@ public class Scout extends AbstractMovable implements Movable{
 
 
 
-	public void move(Direction direction, int distance) {
+	public void move(Board b,int x, int y,Direction direction, int distance) { //pas bon a refaire
 		for(int i=0;i< distance;i++){
-			super.move(direction);
+			super.move(b,x,y,direction);
 		}
 	}
 

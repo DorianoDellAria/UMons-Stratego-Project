@@ -8,7 +8,7 @@ public class Board {
     public Board(){
         for(int i =0;i<caseBoard.length;i++){
             for(int j=0;j<caseBoard[0].length;j++){
-                caseBoard[i][j]=new Case(null);
+                caseBoard[i][j]=new Case(null,i,j);
             }
         }
     }
