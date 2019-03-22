@@ -7,6 +7,7 @@ public class Tester {
 		Board t=new Board();
 		t.caseBoard[1][0].setContent(new Major(Team.Red));
 		t.display();
+
 	}
 
 }
