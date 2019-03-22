@@ -1,16 +1,10 @@
 package pieces;
 
-public class Spy extends Piece implements Movable {
-	protected final int VALUE=1;
+public class Spy extends AbstractMovable implements Movable {
+	private final int VALUE=1;
 
 	public Spy(Team team){
 		super(team);
-	}
-
-
-	@Override
-	public void move(Direction direction) {
-
 	}
 
 	@Override

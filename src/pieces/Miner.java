@@ -1,16 +1,11 @@
 package pieces;
 
-public class Miner extends Piece implements Movable{
+public class Miner extends AbstractMovable implements Movable{
 
-	protected final int VALUE= 3;
+	private final int VALUE= 3;
 
 	public Miner(Team team){
 		super(team);
-	}
-
-	@Override
-	public void move(Direction direction) {
-
 	}
 
 	@Override

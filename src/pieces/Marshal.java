@@ -1,16 +1,11 @@
 package pieces;
 
-public class Marshal extends Piece implements Movable {
+public class Marshal extends AbstractMovable implements Movable {
 
-	protected final int VALUE = 10;
+	private final int VALUE = 10;
 
 	public Marshal(Team team){
 		super(team);
-	}
-
-	@Override
-	public void move(Direction direction) {
-
 	}
 
 	@Override
