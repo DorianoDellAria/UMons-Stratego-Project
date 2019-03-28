@@ -19,4 +19,10 @@ public class Case {
     public void setContent (Piece p){
         this.content=p;
     }
+
+    public void moveContent(Board b,Direction d){
+        if(content!=null && content instanceof AbstractMovable){
+            ((AbstractMovable)this.content).move(b,this.x,this.y,d);
+        }
+    }
 }

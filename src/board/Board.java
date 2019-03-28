@@ -1,6 +1,5 @@
 package board;
 
-import pieces.*;
 
 public class Board {
     public Case [][] caseBoard =new Case[10][10];
@@ -24,7 +23,7 @@ public class Board {
                     System.out.print("null");
             }
             System.out.print("|");
-            System.out.println(" ");
+            System.out.println("");
         }
     }
 }

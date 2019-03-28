@@ -7,5 +7,4 @@ import board.*;
  */
 public interface Movable {
 	public void move(Board b, int x, int y,Direction direction);
-	//public Piece fight(Piece defense);
 }

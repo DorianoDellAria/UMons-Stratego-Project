@@ -8,8 +8,11 @@ public class Tester {
 		t.caseBoard[1][0].setContent(new Major(Team.Red));
 		t.caseBoard[1][1].setContent(new Flag(Team.Red));
 		t.display();
-		t.caseBoard[1][0].getContent().move(t,1,0,Direction.Forward);
+		t.caseBoard[1][0].moveContent(t,Direction.Forward);
 		System.out.println();
+		t.caseBoard[0][0].moveContent(t,Direction.Right);
+		t.display();
+		t.caseBoard[0][1].moveContent(t,Direction.Backward);
 		t.display();
 
 	}
