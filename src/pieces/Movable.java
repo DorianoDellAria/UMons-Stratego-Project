@@ -6,5 +6,5 @@ import board.*;
  * @author D.Dell'Aria
  */
 public interface Movable {
-	public void move(Board b, int x, int y,Direction direction);
+	public void move(int x1, int y1,int x2, int y2);
 }

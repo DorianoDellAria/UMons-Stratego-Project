@@ -1,13 +1,20 @@
 package board;
 
+import javafx.scene.layout.GridPane;
 
-public class Board {
-    public Case [][] caseBoard =new Case[10][10];
+public class Board extends GridPane {
+
+    public static Case [][] caseBoard =new Case[10][10];
+    public static Boolean isClicked = false;
+    public static int xBuffer;
+    public static int yBuffer;
 
     public Board(){
         for(int i =0;i<caseBoard.length;i++){
             for(int j=0;j<caseBoard[0].length;j++){
-                caseBoard[i][j]=new Case(null,i,j);
+                Case tmp=new Case(null,i,j);
+                caseBoard[i][j]=tmp;
+                this.add(tmp,i,j);
             }
         }
     }

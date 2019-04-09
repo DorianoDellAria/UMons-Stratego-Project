@@ -8,21 +8,14 @@ public abstract class AbstractMovable extends Piece implements Movable {
 		super(team);
 	}
 
+
 	@Override
-	public void move(Board b, int x, int y, Direction d){
-		if (d==Direction.Forward){
-			b.caseBoard[x-1][y].setContent(this);
+	public void move( int x1, int y1, int x2, int y2){
+		if((x1==x2 && Math.abs(y1-y2)==1) || (y1==y2 && Math.abs(x1-x2)==1)){
+			Board.caseBoard[x2][y2].setContent(this);
+			Board.caseBoard[x1][y1].setContent(null);
 		}
-		else if(d==Direction.Backward){
-			b.caseBoard[x+1][y].setContent(this);
-		}
-		else if(d==Direction.Left){
-			b.caseBoard[x][y-1].setContent(this);
-		}
-		else {
-			b.caseBoard[x][y+1].setContent(this);
-		}
-		b.caseBoard[x][y].setContent(null);
+
 	}
 
 
