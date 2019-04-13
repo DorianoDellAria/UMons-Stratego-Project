@@ -41,9 +41,18 @@ public class Case extends StackPane {
     public void setContent (Piece p){
         this.content=p;
         if(p!=null) {
+            this.getChildren().clear();
+            Rectangle rec = new Rectangle(60,40);
+            if (p.team==Team.Red) {
+                rec.setFill(Color.RED);
+            }
+            else{
+                rec.setFill(Color.BLUE);
+            }
+            rec.setStroke(Color.BLACK);
             int tmp = this.content.getVALUE();
             Text txt = new Text(Integer.toString(tmp));
-            this.getChildren().add(txt);
+            this.getChildren().addAll(rec,txt);
         }
         else{
             this.getChildren().clear();

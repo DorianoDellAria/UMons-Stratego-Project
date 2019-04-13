@@ -20,10 +20,15 @@ public class Main extends Application {
 		primaryStage.setTitle("Stratego");
 
 		Board board = new Board();
-		Major m =new Major(Team.Red);
+		Major m =new Major(Team.Blue);
 		Scout s = new Scout(Team.Red);
+		Bomb b =new Bomb(Team.Red);
 		Board.caseBoard[5][5].setContent(m);
 		Board.caseBoard[6][6].setContent(s);
+		Board.caseBoard[1][6].setContent(b);
+		Board.caseBoard[0][0].setContent(new Miner(Team.Red));
+		Board.caseBoard[0][1].setContent(new Miner(Team.Blue));
+
 
 		root.setCenter(board);
 
