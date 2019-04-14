@@ -46,8 +46,11 @@ public class Case extends StackPane {
             if (p.team==Team.Red) {
                 rec.setFill(Color.RED);
             }
-            else{
+            else if(p.team==Team.Blue){
                 rec.setFill(Color.BLUE);
+            }
+            else{
+                rec.setFill(Color.BLACK);
             }
             rec.setStroke(Color.BLACK);
             int tmp = this.content.getVALUE();

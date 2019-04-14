@@ -1,6 +1,6 @@
 package pieces;
 
-public abstract class Piece {
+public abstract class Piece{
 	public final Team team;
 
 	public Piece(Team team){

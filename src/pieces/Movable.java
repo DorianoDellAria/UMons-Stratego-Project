@@ -1,6 +1,5 @@
 package pieces;
 
-import board.*;
 
 /**
  * @author D.Dell'Aria

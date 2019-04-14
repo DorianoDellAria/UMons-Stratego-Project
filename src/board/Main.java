@@ -28,6 +28,8 @@ public class Main extends Application {
 		Board.caseBoard[1][6].setContent(b);
 		Board.caseBoard[0][0].setContent(new Miner(Team.Red));
 		Board.caseBoard[0][1].setContent(new Miner(Team.Blue));
+		Board.caseBoard[0][6].setContent(new Obstacle());
+
 
 
 		root.setCenter(board);
