@@ -7,6 +7,7 @@ import javafx.scene.text.Text;
 import pieces.*;
 
 public class Case extends StackPane {
+
     private Piece content;
     public final int x;
     public final int y;
@@ -29,6 +30,8 @@ public class Case extends StackPane {
             else if(Board.isClicked && (Board.xBuffer != this.x || Board.yBuffer != this.y)){
                 ((Movable)Board.caseBoard[Board.xBuffer][Board.yBuffer].getContent()).move(Board.xBuffer, Board.yBuffer, this.x, this.y);
                 Board.isClicked=false;
+                Main.nbCoup++;
+				Main.checkGameOver();
             }
         });
 
@@ -47,7 +50,7 @@ public class Case extends StackPane {
                 rec.setFill(Color.RED);
             }
             else if(p.team==Team.Blue){
-                rec.setFill(Color.BLUE);
+                rec.setFill(Color.LIGHTBLUE);
             }
             else{
                 rec.setFill(Color.BLACK);
