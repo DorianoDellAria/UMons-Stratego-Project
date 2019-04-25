@@ -2,10 +2,10 @@
 <project name = "Stratego">
     <target name = "build">
         <mkdir dir="out"/>
-        <javac includeantruntime="false" srcdir = "./src" destdir="./out"/>
+        <javac  includeantruntime = "false" srcdir = "src" destdir = "out" />
     </target>
     <target name = "run" depends ="build">
-        <java classname="board.Main" classpath="./out"/>
+        <java classname = "board.Main" classpath = "out ; lib/jfxrt.jar"/>  <!--attention utilisation de ";"-->
     </target>
     <target name="clean">
         <delete dir="out"/>
