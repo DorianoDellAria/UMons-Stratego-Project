@@ -19,5 +19,6 @@ public class Tester {
 * https://www.freepng.fr/png-b68os7/ image spy 3
 * https://www.freepng.fr/png-g5v37u/ image flag
 * https://www.freepng.fr/png-7bhy7f/ image obstacle
+* https://unixtitan.net/explore/viking-svg-decal/#gal_post_9265_viking-svg-decal-4.png image logo
 * */
 

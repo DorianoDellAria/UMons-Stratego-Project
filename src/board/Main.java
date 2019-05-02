@@ -47,8 +47,6 @@ public class Main extends Application {
 		Group groupe2=new Group();
 		Group groupe=new Group();
 		Button B1=new Button("1");
-		ImageView bouton=new ImageView(getClass().getResource("stratego.png").toExternalForm());
-		B1.setGraphic(bouton);
 		Button B2=new Button("2");B2.setLayoutY(30);
 		Button B3=new Button("3");B3.setLayoutY(60);
 		Button B4=new Button("1");
@@ -88,7 +86,7 @@ public class Main extends Application {
 		root.setRight(sp);
 		root.setBottom(sp2);
 		root.setTop(menu);
-		primaryStage.getIcons().add(new Image(getClass().getResource("stratego.png").toExternalForm()));
+		primaryStage.getIcons().add(new Image(getClass().getResource("../images/stratego.png").toExternalForm()));
 		primaryStage.show();
 	}
 
