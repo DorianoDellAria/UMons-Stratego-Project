@@ -4,17 +4,23 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 
-import static java.lang.System.exit;
 
 public class MyMenuBarre extends MenuBar {
 
     public MyMenuBarre () {
-        super();
         Menu fichier =new Menu("Jeu");
         Menu option = new Menu ("Options");
         MenuItem exit =new MenuItem("Quitter");
-        exit.setOnAction(event -> exit(0));
+        MenuItem start = new MenuItem("Start");
+        MenuItem stop = new MenuItem("Stop");
+        start.setOnAction(e->Main.isGameStarted=true);
+        stop.setOnAction(e->{
+            Main.isGameStarted=false;
+            Board.cleanBoard();
+        });
+        exit.setOnAction(event -> System.exit(0));
         option.getItems().add(exit);
+        fichier.getItems().addAll(start, stop);
 
 
         super.getMenus().addAll(fichier,option);

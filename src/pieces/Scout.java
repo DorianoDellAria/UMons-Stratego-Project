@@ -5,7 +5,7 @@ import javafx.scene.image.ImageView;
 
 public class Scout extends AbstractMovable implements Movable{
 	private final int VALUE=2;
-	private final ImageView ImgFlag=new ImageView(getClass().getResource("../images/scout.png").toExternalForm());
+	private ImageView ImgFlag=new ImageView(getClass().getResource("../images/scout.png").toExternalForm());
 
 	public Scout(Team team){
 		super(team);

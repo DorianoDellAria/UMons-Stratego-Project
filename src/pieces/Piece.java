@@ -23,4 +23,6 @@ public abstract class Piece{
 
 	public abstract int getVALUE();
 	public abstract ImageView getIMG();
+
+
 }

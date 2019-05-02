@@ -19,6 +19,14 @@ public class Board extends GridPane {
         }
     }
 
+    public static void cleanBoard(){
+        for(int i = 0 ; i<caseBoard.length;i++){
+            for(int j  = 0; j < caseBoard[0].length ; j++){
+                caseBoard[i][j].setContent(null);
+            }
+        }
+    }
+
 
     public void display() {                 //Fonction d'affichage console pour debug
         for (int i = 0; i < 10; i++) {

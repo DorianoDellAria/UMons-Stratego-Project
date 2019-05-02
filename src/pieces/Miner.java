@@ -5,7 +5,7 @@ import javafx.scene.image.ImageView;
 public class Miner extends AbstractMovable implements Movable{
 
 	private final int VALUE= 3;
-	ImageView ImgMiner=new ImageView(getClass().getResource("../images/miner.png").toExternalForm());
+	private ImageView ImgMiner=new ImageView(getClass().getResource("../images/miner.png").toExternalForm());
 
 	public Miner(Team team){
 		super(team);

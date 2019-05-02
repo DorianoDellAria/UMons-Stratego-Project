@@ -23,16 +23,59 @@ public class Case extends StackPane {
         this.x=x;
         this.y=y;
         this.setOnMouseClicked(event->{
-            if(!Board.isClicked && this.content!=null && this.content instanceof Movable){
-                Board.xBuffer=this.x;
-                Board.yBuffer=this.y;
-                Board.isClicked=true;
+            if(Main.isGameStarted) {
+                if (!Board.isClicked && this.content != null && this.content instanceof Movable) {
+                    Board.xBuffer = this.x;
+                    Board.yBuffer = this.y;
+                    Board.isClicked = true;
+                } else if (Board.isClicked && (Board.xBuffer != this.x || Board.yBuffer != this.y)) {
+                    ((Movable) Board.caseBoard[Board.xBuffer][Board.yBuffer].getContent()).move(Board.xBuffer, Board.yBuffer, this.x, this.y);
+                    Board.isClicked = false;
+                    Main.nbCoup++;
+                    Main.checkGameOver();
+                }
             }
-            else if(Board.isClicked && (Board.xBuffer != this.x || Board.yBuffer != this.y)){
-                ((Movable)Board.caseBoard[Board.xBuffer][Board.yBuffer].getContent()).move(Board.xBuffer, Board.yBuffer, this.x, this.y);
-                Board.isClicked=false;
-                Main.nbCoup++;
-				Main.checkGameOver();
+            else{
+                switch(SelectionPanel.rankBuffer){
+                    case 0:this.setContent(new Flag(Team.Red));
+                    break;
+
+                    case 1:this.setContent(new Spy(Team.Red));
+                    break;
+
+                    case 2:this.setContent(new Scout(Team.Red));
+                    break;
+
+                    case 3:this.setContent(new Miner(Team.Red));
+                    break;
+
+                    case 4:this.setContent(new Sergeant(Team.Red));
+                    break;
+
+                    case 5:this.setContent(new Lieutenant(Team.Red));
+                    break;
+
+                    case 6:this.setContent(new Captain(Team.Red));
+                    break;
+
+                    case 7:this.setContent(new Major(Team.Red));
+                    break;
+
+                    case 8:this.setContent(new Colonel(Team.Red));
+                    break;
+
+                    case 9:this.setContent(new General(Team.Red));
+                    break;
+
+                    case 10:this.setContent(new Marshal(Team.Red));
+                    break;
+
+                    case 11:this.setContent(new Bomb(Team.Red));
+                    break;
+
+                    default:System.out.println("erreur");
+                    break;
+                }
             }
         });
 

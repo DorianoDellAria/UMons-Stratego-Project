@@ -5,7 +5,7 @@ import javafx.scene.image.ImageView;
 public class Major extends AbstractMovable implements Movable {
 
 	private final int VALUE = 7;
-	private final ImageView ImgFlag=new ImageView(getClass().getResource("../images/major.png").toExternalForm());
+	private ImageView ImgFlag=new ImageView(getClass().getResource("../images/major.png").toExternalForm());
 
 	public Major(Team team){
 		super(team);

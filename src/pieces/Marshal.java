@@ -5,7 +5,7 @@ import javafx.scene.image.ImageView;
 public class Marshal extends AbstractMovable implements Movable {
 
 	private final int VALUE = 10;
-	ImageView ImgMarshal=new ImageView(getClass().getResource("../images/marshal.png").toExternalForm());
+	private ImageView ImgMarshal=new ImageView(getClass().getResource("../images/marshal.png").toExternalForm());
 
 	public Marshal(Team team){
 		super(team);

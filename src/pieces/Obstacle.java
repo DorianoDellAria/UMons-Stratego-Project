@@ -3,7 +3,7 @@ package pieces;
 import javafx.scene.image.ImageView;
 
 public class Obstacle extends Piece{
-
+	private ImageView ImgFlag=new ImageView(getClass().getResource("../images/obstacle.jpg").toExternalForm());
 
 	public Obstacle() {
 		super(null);
@@ -16,7 +16,6 @@ public class Obstacle extends Piece{
 
 	@Override
 	public ImageView getIMG() {
-		 final ImageView ImgFlag=new ImageView(getClass().getResource("../images/obstacle.jpg").toExternalForm());
 		return ImgFlag;
 	}
 }
