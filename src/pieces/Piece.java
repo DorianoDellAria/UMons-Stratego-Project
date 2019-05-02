@@ -1,5 +1,7 @@
 package pieces;
 
+import javafx.scene.image.ImageView;
+
 public abstract class Piece{
 	public final Team team;
 
@@ -20,4 +22,5 @@ public abstract class Piece{
 	}
 
 	public abstract int getVALUE();
+	public abstract ImageView getIMG();
 }

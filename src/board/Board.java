@@ -25,7 +25,7 @@ public class Board extends GridPane {
             for (int j = 0; j < 10; j++) {
                 System.out.print("|");
                 if(caseBoard[i][j].getContent()!=null)
-                    System.out.print(caseBoard[i][j].getContent().getVALUE());
+                    System.out.print(caseBoard[i][j].getContent().getIMG());
                 else
                     System.out.print("null");
             }

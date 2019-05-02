@@ -1,5 +1,6 @@
 package board;
 
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -56,9 +57,9 @@ public class Case extends StackPane {
                 rec.setFill(Color.BLACK);
             }
             rec.setStroke(Color.BLACK);
-            int tmp = this.content.getVALUE();
-            Text txt = new Text(Integer.toString(tmp));
-            this.getChildren().addAll(rec,txt);
+            ImageView tmp = this.content.getIMG();
+            this.getChildren().addAll(rec,tmp);
+
         }
         else{
             this.getChildren().clear();

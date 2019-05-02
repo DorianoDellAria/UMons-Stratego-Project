@@ -1,9 +1,11 @@
 package pieces;
 
 import board.*;
+import javafx.scene.image.ImageView;
 
 public class Scout extends AbstractMovable implements Movable{
 	private final int VALUE=2;
+	private final ImageView ImgFlag=new ImageView(getClass().getResource("../images/scout.png").toExternalForm());
 
 	public Scout(Team team){
 		super(team);
@@ -61,4 +63,6 @@ public class Scout extends AbstractMovable implements Movable{
 	public int getVALUE(){
 		return this.VALUE;
 	}
+	@Override
+	public ImageView getIMG(){return this.ImgFlag;}
 }
