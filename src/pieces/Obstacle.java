@@ -1,12 +1,23 @@
 package pieces;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 public class Obstacle extends Piece{
-	private ImageView ImgFlag=new ImageView(getClass().getResource("../images/obstacle.jpg").toExternalForm());
+	private ImageView img;
 
 	public Obstacle() {
 		super(null);
+		try {
+			FileInputStream fis = new FileInputStream("./images/obstacle.jpg");
+			Image tmp = new Image(fis);
+			this.img = new ImageView(tmp);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -16,6 +27,6 @@ public class Obstacle extends Piece{
 
 	@Override
 	public ImageView getIMG() {
-		return ImgFlag;
+		return img;
 	}
 }

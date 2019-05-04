@@ -1,14 +1,25 @@
 package pieces;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class Colonel extends AbstractMovable implements Movable {
 
 	private final int VALUE = 8;
-	ImageView ImgFlag=new ImageView(getClass().getResource("../images/colonel.png").toExternalForm());
+	private ImageView img;
 
 	public Colonel(Team team){
 		super(team);
+		try {
+			FileInputStream fis = new FileInputStream("./images/colonel.png");
+			Image tmp = new Image(fis);
+			this.img = new ImageView(tmp);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 
@@ -16,5 +27,7 @@ public class Colonel extends AbstractMovable implements Movable {
 	public int getVALUE(){
 		return this.VALUE;
 	}
-	public ImageView getIMG(){return this.ImgFlag;}
+
+	@Override
+	public ImageView getIMG(){return this.img;}
 }

@@ -1,14 +1,25 @@
 package pieces;
 
 import board.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class Scout extends AbstractMovable implements Movable{
 	private final int VALUE=2;
-	private ImageView ImgFlag=new ImageView(getClass().getResource("../images/scout.png").toExternalForm());
+	private ImageView img;
 
 	public Scout(Team team){
 		super(team);
+		try {
+			FileInputStream fis = new FileInputStream("./images/scout.png");
+			Image tmp = new Image(fis);
+			this.img = new ImageView(tmp);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 
@@ -63,6 +74,7 @@ public class Scout extends AbstractMovable implements Movable{
 	public int getVALUE(){
 		return this.VALUE;
 	}
+
 	@Override
-	public ImageView getIMG(){return this.ImgFlag;}
+	public ImageView getIMG(){return this.img;}
 }

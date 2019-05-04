@@ -5,7 +5,11 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import pieces.*;
+import pieces.Flag;
+import pieces.Team;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 
 public class Main extends Application {
@@ -26,18 +30,7 @@ public class Main extends Application {
 		primaryStage.setTitle("Stratego");
 
 		Board board = new Board();
-		Major m =new Major(Team.Blue);
-		Scout s = new Scout(Team.Red);
-		Bomb b =new Bomb(Team.Red);
-		Board.caseBoard[5][5].setContent(m);
-		Board.caseBoard[6][6].setContent(s);
-		Board.caseBoard[1][6].setContent(b);
-		Board.caseBoard[0][0].setContent(new Miner(Team.Red));
-		Board.caseBoard[0][1].setContent(new Miner(Team.Blue));
-		Board.caseBoard[0][6].setContent(new Obstacle());
-		Board.caseBoard[0][9].setContent(new Flag(Team.Blue));
-		Board.caseBoard[0][8].setContent(new Flag(Team.Red));
-		Board.caseBoard[9][8].setContent(new Lieutenant(Team.Red));
+
 
 		MyMenuBarre menu=new MyMenuBarre();
 
@@ -47,7 +40,13 @@ public class Main extends Application {
 		root.setCenter(board);
 		root.setBottom(select);
 		root.setTop(menu);
-		primaryStage.getIcons().add(new Image(getClass().getResource("../images/stratego.png").toExternalForm()));
+		try{
+			FileInputStream fis  = new FileInputStream("./images/stratego.png");
+			Image img =new Image(fis);
+			primaryStage.getIcons().add(img);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		primaryStage.show();
 	}
 

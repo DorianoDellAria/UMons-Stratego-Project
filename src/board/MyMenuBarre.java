@@ -23,6 +23,6 @@ public class MyMenuBarre extends MenuBar {
         fichier.getItems().addAll(start, stop);
 
 
-        super.getMenus().addAll(fichier,option);
+        this.getMenus().addAll(fichier,option);
     }
 }
