@@ -4,7 +4,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import pieces.*;
 
 public class Case extends StackPane {
@@ -36,7 +35,7 @@ public class Case extends StackPane {
                 }
             }
             else{
-                if(this.content ==null && this.y >=7 && SelectionPanel.isClicked) {
+                if(this.content ==null && this.y >=6 && SelectionPanel.isClicked) {
                     switch (SelectionPanel.rankBuffer) {
                         case 0:
                             this.setContent(new Flag(Team.Red));
