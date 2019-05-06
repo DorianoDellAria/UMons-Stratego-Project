@@ -14,7 +14,7 @@ public class Case extends StackPane {
 
 
     public Case (Piece content, int x, int y){
-        Rectangle rectangle = new Rectangle(60,40);
+        Rectangle rectangle = new Rectangle(70,50);
         rectangle.setStroke(Color.BLACK);
         rectangle.setFill(null);
         this.getChildren().add(rectangle);
@@ -105,7 +105,7 @@ public class Case extends StackPane {
         this.content=p;
         if(p!=null) {
             this.getChildren().clear();
-            Rectangle rec = new Rectangle(60,40);
+            Rectangle rec = new Rectangle(70,50);
             if (p.team==Team.Red) {
                 rec.setFill(Color.RED);
             }
@@ -122,7 +122,7 @@ public class Case extends StackPane {
         }
         else{
             this.getChildren().clear();
-            Rectangle rec = new Rectangle(60,40);
+            Rectangle rec = new Rectangle(70,50);
             rec.setFill(null);
             rec.setStroke(Color.BLACK);
             this.getChildren().add(rec);
