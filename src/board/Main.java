@@ -26,7 +26,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage){
 		BorderPane root = new BorderPane();
-		primaryStage.setScene(new Scene(root,700,500));
+		primaryStage.setScene(new Scene(root,1100,600));
 		primaryStage.setTitle("Stratego");
 
 		Board board = new Board();
