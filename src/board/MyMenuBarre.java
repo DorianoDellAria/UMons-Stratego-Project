@@ -1,7 +1,6 @@
 package board;
 
-import javafx.geometry.Orientation;
-import javafx.scene.Group;
+
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
