@@ -12,7 +12,7 @@ public class Obstacle extends Piece{
 	public Obstacle() {
 		super(null);
 		try {
-			FileInputStream fis = new FileInputStream("./images/obstacle.jpg");
+			FileInputStream fis = new FileInputStream("./images/obstacle.png");
 			Image tmp = new Image(fis);
 			this.img = new ImageView(tmp);
 			this.img.setFitWidth(65);
