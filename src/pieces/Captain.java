@@ -17,6 +17,8 @@ public class Captain extends AbstractMovable implements Movable {
 			FileInputStream fis = new FileInputStream("./images/captain.png");
 			Image tmp = new Image(fis);
 			this.img = new ImageView(tmp);
+			this.img.setFitHeight(45);
+			this.img.setPreserveRatio(true);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

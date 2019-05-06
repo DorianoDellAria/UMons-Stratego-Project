@@ -14,9 +14,11 @@ public class Bomb extends Piece {
 	public Bomb(Team team){
 		super(team);
 		try{
-			FileInputStream fis = new FileInputStream("./images/bomb.jpg");
+			FileInputStream fis = new FileInputStream("./images/bomb.png");
 			Image tmp = new Image(fis);
 			this.img = new ImageView(tmp);
+			this.img.setFitHeight(45);
+			this.img.setPreserveRatio(true);
 		}catch(FileNotFoundException e){
 			e.printStackTrace();
 		}
