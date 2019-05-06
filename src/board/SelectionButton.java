@@ -53,6 +53,7 @@ public class SelectionButton extends StackPane {
 				rec2.setFill(Color.BLACK);
 				rec2.setStroke(Color.BLACK);
 				this.getChildren().add(rec2);
+				this.setOnMouseClicked(null);
 			}
 		});
 		this.getChildren().addAll(rec,this.img);

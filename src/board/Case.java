@@ -113,7 +113,7 @@ public class Case extends StackPane {
                 rec.setFill(Color.LIGHTBLUE);
             }
             else{
-                rec.setFill(Color.BLACK);
+                rec.setFill(null);
             }
             rec.setStroke(Color.BLACK);
             ImageView tmp = this.content.getIMG();

@@ -1,6 +1,7 @@
 package board;
 
 import javafx.scene.layout.GridPane;
+import pieces.Obstacle;
 
 public class Board extends GridPane {
 
@@ -17,6 +18,14 @@ public class Board extends GridPane {
                 this.add(tmp,i,j);
             }
         }
+        this.caseBoard[2][4].setContent(new Obstacle());
+        this.caseBoard[3][4].setContent(new Obstacle());
+        this.caseBoard[6][4].setContent(new Obstacle());
+        this.caseBoard[7][4].setContent(new Obstacle());
+        this.caseBoard[2][5].setContent(new Obstacle());
+        this.caseBoard[3][5].setContent(new Obstacle());
+        this.caseBoard[6][5].setContent(new Obstacle());
+        this.caseBoard[7][5].setContent(new Obstacle());
     }
 
     public static void cleanBoard(){
@@ -38,7 +47,7 @@ public class Board extends GridPane {
                     System.out.print("null");
             }
             System.out.print("|");
-            System.out.println("");
+            System.out.println();
         }
     }
 }
