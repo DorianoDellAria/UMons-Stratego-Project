@@ -15,6 +15,8 @@ public class Obstacle extends Piece{
 			FileInputStream fis = new FileInputStream("./images/obstacle.jpg");
 			Image tmp = new Image(fis);
 			this.img = new ImageView(tmp);
+			this.img.setFitWidth(65);
+			this.img.setPreserveRatio(true);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
