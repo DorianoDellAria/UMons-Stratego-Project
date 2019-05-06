@@ -16,6 +16,8 @@ public class Flag extends Piece{
 			FileInputStream fis = new FileInputStream("./images/flag.jpg");
 			Image tmp = new Image(fis);
 			this.img = new ImageView(tmp);
+			this.img.setFitHeight(45);
+			this.img.setPreserveRatio(true);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
