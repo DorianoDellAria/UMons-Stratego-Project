@@ -1,21 +1,44 @@
 package board;
 
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 
 public class SelectionButton extends StackPane {
 
 	private int maxPiece;
 	private final int rank;
+	private ImageView img;
+
+
 
 	public SelectionButton(int rank, int maxPiece){
 		this.rank= rank;
 		this.maxPiece = maxPiece;
 		Rectangle rec = new Rectangle(60,40);
 		Text txt = new Text(Integer.toString(this.rank));
+
+
+		int i=this.rank;
+			try{
+				FileInputStream fis = new FileInputStream("./images/"+i+".png");
+				Image tmp = new Image(fis);
+				this.img = new ImageView(tmp);
+				this.img.setFitHeight(35);
+				this.img.setPreserveRatio(true);
+			}catch(FileNotFoundException e){
+				e.printStackTrace();
+			}
+
+
 		rec.setStroke(Color.BLACK);
 		rec.setFill(null);
 		this.setOnMouseClicked(e->{
@@ -33,7 +56,7 @@ public class SelectionButton extends StackPane {
 				this.setOnMouseClicked(null);
 			}
 		});
-		this.getChildren().addAll(rec,txt);
+		this.getChildren().addAll(rec,this.img);
 	}
 
 }
