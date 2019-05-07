@@ -26,6 +26,7 @@ public class MyMenuBarre extends MenuBar {
             Main.isGameStarted=false;
             Board.cleanBoard();
             SelectionPanel.reset();
+            Main.nbCoup=0;
 
         });
 

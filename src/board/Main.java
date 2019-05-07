@@ -17,6 +17,7 @@ public class Main extends Application {
 
 	public static int nbCoup=0;
 	public static boolean isGameStarted = false;
+	public static Team playerTeam = Team.Red;
 
 
 

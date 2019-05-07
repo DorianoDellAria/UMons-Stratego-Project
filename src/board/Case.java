@@ -22,8 +22,8 @@ public class Case extends StackPane {
         this.x=x;
         this.y=y;
         this.setOnMouseClicked(event->{
-            if(Main.isGameStarted) {
-                if (!Board.isClicked && this.content != null && this.content instanceof Movable) {
+            if(Main.isGameStarted && Main.nbCoup%2==0) {
+                if (!Board.isClicked && this.content != null && this.content instanceof Movable && this.content.team==Main.playerTeam) {
                     Board.xBuffer = this.x;
                     Board.yBuffer = this.y;
                     Board.isClicked = true;
@@ -38,51 +38,51 @@ public class Case extends StackPane {
                 if(this.content ==null && this.y >=6 && SelectionPanel.isClicked) {
                     switch (SelectionPanel.rankBuffer) {
                         case 0:
-                            this.setContent(new Flag(Team.Red));
+                            this.setContent(new Flag(Main.playerTeam));
                             break;
 
                         case 1:
-                            this.setContent(new Spy(Team.Red));
+                            this.setContent(new Spy(Main.playerTeam));
                             break;
 
                         case 2:
-                            this.setContent(new Scout(Team.Red));
+                            this.setContent(new Scout(Main.playerTeam));
                             break;
 
                         case 3:
-                            this.setContent(new Miner(Team.Red));
+                            this.setContent(new Miner(Main.playerTeam));
                             break;
 
                         case 4:
-                            this.setContent(new Sergeant(Team.Red));
+                            this.setContent(new Sergeant(Main.playerTeam));
                             break;
 
                         case 5:
-                            this.setContent(new Lieutenant(Team.Red));
+                            this.setContent(new Lieutenant(Main.playerTeam));
                             break;
 
                         case 6:
-                            this.setContent(new Captain(Team.Red));
+                            this.setContent(new Captain(Main.playerTeam));
                             break;
 
                         case 7:
-                            this.setContent(new Major(Team.Red));
+                            this.setContent(new Major(Main.playerTeam));
                             break;
 
                         case 8:
-                            this.setContent(new Colonel(Team.Red));
+                            this.setContent(new Colonel(Main.playerTeam));
                             break;
 
                         case 9:
-                            this.setContent(new General(Team.Red));
+                            this.setContent(new General(Main.playerTeam));
                             break;
 
                         case 10:
-                            this.setContent(new Marshal(Team.Red));
+                            this.setContent(new Marshal(Main.playerTeam));
                             break;
 
                         case 11:
-                            this.setContent(new Bomb(Team.Red));
+                            this.setContent(new Bomb(Main.playerTeam));
                             break;
 
                         default:
