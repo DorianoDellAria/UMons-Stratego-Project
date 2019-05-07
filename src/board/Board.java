@@ -34,6 +34,14 @@ public class Board extends GridPane {
                 caseBoard[i][j].setContent(null);
             }
         }
+		caseBoard[2][4].setContent(new Obstacle());
+		caseBoard[3][4].setContent(new Obstacle());
+		caseBoard[6][4].setContent(new Obstacle());
+		caseBoard[7][4].setContent(new Obstacle());
+		caseBoard[2][5].setContent(new Obstacle());
+		caseBoard[3][5].setContent(new Obstacle());
+		caseBoard[6][5].setContent(new Obstacle());
+		caseBoard[7][5].setContent(new Obstacle());
     }
 
 

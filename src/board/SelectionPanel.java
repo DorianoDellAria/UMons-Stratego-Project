@@ -7,19 +7,19 @@ import javafx.scene.layout.HBox;
 public class SelectionPanel extends ScrollPane {
 
 	public static int rankBuffer=-1;
-	private HBox container = new HBox();
+	private static HBox container = new HBox();
 	public static boolean isClicked= false;
 
 	public SelectionPanel(){
 		this.setHbarPolicy(ScrollBarPolicy.ALWAYS);
 		this.setVbarPolicy(ScrollBarPolicy.NEVER);
-		this.setButton();
+		setButton();
 		this.setContent(container);
 		this.setPrefHeight(60);
 		this.setPrefWidth(700);
 	}
 
-	private void setButton(){
+	private static void setButton(){
 		SelectionButton flag = new SelectionButton(0,1);
 		SelectionButton spy = new SelectionButton(1,1);
 		SelectionButton scout = new SelectionButton(2,8);
@@ -33,6 +33,12 @@ public class SelectionPanel extends ScrollPane {
 		SelectionButton marshal = new SelectionButton(10,1);
 		SelectionButton bomb = new SelectionButton(11, 6);
 		container.getChildren().addAll(flag, spy, scout, miner, sergeant, lieutenant, captain, major, colonel, general, marshal, bomb);
+	}
+
+	public static void reset(){
+		container.getChildren().clear();
+		setButton();
+
 	}
 
 }

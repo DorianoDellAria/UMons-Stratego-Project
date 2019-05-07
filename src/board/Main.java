@@ -1,5 +1,6 @@
 package board;
 
+import ai.RandomAI;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -48,6 +49,10 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 		primaryStage.show();
+
+		RandomAI test = new RandomAI(Team.Blue);
+		test.init();
+
 	}
 
 	public static void checkGameOver(){   //à optimiser ex: retenir la place des flags pour eviter de faire un double for

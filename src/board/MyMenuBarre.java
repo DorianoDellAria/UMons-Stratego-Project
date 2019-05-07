@@ -17,6 +17,8 @@ public class MyMenuBarre extends MenuBar {
         stop.setOnAction(e->{
             Main.isGameStarted=false;
             Board.cleanBoard();
+            SelectionPanel.reset();
+
         });
         exit.setOnAction(event -> System.exit(0));
         option.getItems().add(exit);
