@@ -18,6 +18,7 @@ public class Main extends Application {
 	public static int nbCoup=0;
 	public static boolean isGameStarted = false;
 	public static Team playerTeam = Team.Red;
+	public static RandomAI player2;
 
 
 
@@ -51,8 +52,8 @@ public class Main extends Application {
 		}
 		primaryStage.show();
 
-		RandomAI test = new RandomAI(Team.Blue);
-		test.init();
+		player2 = new RandomAI(Team.Blue);
+		player2.init();
 
 	}
 

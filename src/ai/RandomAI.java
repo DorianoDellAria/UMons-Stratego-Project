@@ -1,6 +1,7 @@
 package ai;
 
 import board.Board;
+import board.Main;
 import pieces.*;
 import pieces.Team;
 
@@ -11,6 +12,8 @@ public class RandomAI {
 
 	private Random rnd = new Random();
 	private Team team;
+	private ArrayList<Tuple> piecesPosition = new ArrayList<>(40);
+	private boolean isOK=true;
 
 	public RandomAI(Team team){
 		this.team = team;
@@ -96,13 +99,91 @@ public class RandomAI {
 					nbP.remove(tmp);
 					pieces.remove(tmp);
 				}
+				piecesPosition.add(new Tuple(i,j));
 			}
 		}
+		debug(piecesPosition);
 
 
 	}
 
+	public void makeAMove(){
+		do {
+			int tmp = rnd.nextInt(piecesPosition.size());
+			System.out.println(piecesPosition.get(tmp));
+			int x = piecesPosition.get(tmp).x;
+			int y = piecesPosition.get(tmp).y;
+			if (Board.caseBoard[x][y].getContent()==null || Board.caseBoard[x][y].getContent().team!=this.team) {
+				piecesPosition.remove(tmp);
+				continue;
+			}
 
+			if (Board.caseBoard[x][y].getContent() instanceof Movable && this.isFree(x, y)) {
+				boolean[] authorisedMove = this.getAuthorisedMove(x, y);
+				if (authorisedMove[0]) {
+					((Movable) (Board.caseBoard[x][y].getContent())).move(x, y, x - 1, y);
+					isOK=false;
+					piecesPosition.get(tmp).x=x-1;
+				}
+				else if (authorisedMove[1]) {
+					((Movable) (Board.caseBoard[x][y].getContent())).move(x, y, x + 1, y);
+					isOK=false;
+					piecesPosition.get(tmp).x=x+1;
+				}
+				else if (authorisedMove[2]) {
+					((Movable) (Board.caseBoard[x][y].getContent())).move(x, y, x, y - 1);
+					isOK=false;
+					piecesPosition.get(tmp).y=y-1;
+				}
+				else if (authorisedMove[3]) {
+					((Movable) (Board.caseBoard[x][y].getContent())).move(x, y, x, y + 1);
+					isOK=false;
+					piecesPosition.get(tmp).y=y+1;
+				}
+
+			}
+		}while(isOK);
+		isOK=true;
+		Main.nbCoup++;
+	}
+
+	private boolean isFree(int x, int y){
+		if(x>0 && ((Board.caseBoard[x-1][y].getContent()==null) || (Board.caseBoard[x-1][y].getContent().team!=null && !(Board.caseBoard[x-1][y].getContent().team.equals(this.team))))){
+			return true;
+		}
+		if(x<9 && ((Board.caseBoard[x+1][y].getContent()==null) || (Board.caseBoard[x+1][y].getContent().team!=null && !(Board.caseBoard[x+1][y].getContent().team.equals(this.team))))){
+			return true;
+		}
+		if(y>0 && ((Board.caseBoard[x][y-1].getContent()==null) || (Board.caseBoard[x][y-1].getContent().team!=null && !(Board.caseBoard[x][y-1].getContent().team.equals(this.team))))){
+			return true;
+		}
+		if(y<9 && ((Board.caseBoard[x][y+1].getContent()==null) || (Board.caseBoard[x][y+1].getContent().team!=null && !(Board.caseBoard[x][y+1].getContent().team.equals(this.team))))){
+			return true;
+		}
+		return false;
+	}
+
+	private boolean[] getAuthorisedMove(int x, int y){
+		boolean [] authorisedMove = {false,false,false,false};
+		if(x>0 && ((Board.caseBoard[x-1][y].getContent()==null) || (Board.caseBoard[x-1][y].getContent().team!=null && !(Board.caseBoard[x-1][y].getContent().team.equals(this.team))))){
+			authorisedMove[0]=true;
+		}
+		if(x<9 && ((Board.caseBoard[x+1][y].getContent()==null) || (Board.caseBoard[x+1][y].getContent().team!=null && !(Board.caseBoard[x+1][y].getContent().team.equals(this.team))))){
+			authorisedMove[1]=true;
+		}
+		if(y>0 && ((Board.caseBoard[x][y-1].getContent()==null) || (Board.caseBoard[x][y-1].getContent().team!=null && !(Board.caseBoard[x][y-1].getContent().team.equals(this.team))))){
+			authorisedMove[2]=true;
+		}
+		if(y<9 && ((Board.caseBoard[x][y+1].getContent()==null) || (Board.caseBoard[x][y+1].getContent().team!=null && !(Board.caseBoard[x][y+1].getContent().team.equals(this.team))))){
+			authorisedMove[3]=true;
+		}
+		return authorisedMove;
+	}
+
+	public static void debug(ArrayList<Tuple> P){
+		for(Tuple i : P)
+			System.out.println(i);
+	}
 
 
 

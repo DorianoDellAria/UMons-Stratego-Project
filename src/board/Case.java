@@ -32,6 +32,7 @@ public class Case extends StackPane {
                     Board.isClicked = false;
                     Main.nbCoup++;
                     Main.checkGameOver();
+                    Main.player2.makeAMove();
                 }
             }
             else{
