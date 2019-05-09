@@ -14,7 +14,7 @@ public class Major extends AbstractMovable implements Movable {
 	public Major(Team team){
 		super(team);
 		try {
-			FileInputStream fis = new FileInputStream("./images/major.png");
+			FileInputStream fis = new FileInputStream("./images/7.png");
 			Image tmp = new Image(fis);
 			this.img = new ImageView(tmp);
 			this.img.setFitHeight(45);

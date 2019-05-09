@@ -13,7 +13,7 @@ public class Flag extends Piece{
 	public Flag(Team team){
 		super(team);
 		try {
-			FileInputStream fis = new FileInputStream("./images/flag.png");
+			FileInputStream fis = new FileInputStream("./images/0.png");
 			Image tmp = new Image(fis);
 			this.img = new ImageView(tmp);
 			this.img.setFitHeight(45);

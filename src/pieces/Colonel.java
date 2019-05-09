@@ -14,7 +14,7 @@ public class Colonel extends AbstractMovable implements Movable {
 	public Colonel(Team team){
 		super(team);
 		try {
-			FileInputStream fis = new FileInputStream("./images/colonel.png");
+			FileInputStream fis = new FileInputStream("./images/8.png");
 			Image tmp = new Image(fis);
 			this.img = new ImageView(tmp);
 			this.img.setFitHeight(45);
