@@ -14,7 +14,7 @@ public class Scout extends AbstractMovable implements Movable{
 	public Scout(Team team){
 		super(team);
 		try {
-			FileInputStream fis = new FileInputStream("./images/scout.png");
+			FileInputStream fis = new FileInputStream("./images/2.png");
 			Image tmp = new Image(fis);
 			this.img = new ImageView(tmp);
 			this.img.setFitHeight(45);

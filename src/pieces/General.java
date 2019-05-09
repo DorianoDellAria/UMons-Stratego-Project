@@ -14,7 +14,7 @@ public class General extends AbstractMovable implements Movable {
 	public General(Team team){
 		super(team);
 		try {
-			FileInputStream fis = new FileInputStream("./images/general.png");
+			FileInputStream fis = new FileInputStream("./images/9.png");
 			Image tmp = new Image(fis);
 			this.img = new ImageView(tmp);
 			this.img.setFitHeight(45);
