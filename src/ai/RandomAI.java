@@ -8,18 +8,19 @@ import pieces.Team;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class RandomAI {
+public class RandomAI implements AI {
 
 	private Random rnd = new Random();
 	private Team team;
 	private ArrayList<Tuple> piecesPosition = new ArrayList<>(40);
-	private boolean isOK=true;
+	private boolean isPieceMoved =true;
 
 	public RandomAI(Team team){
 		this.team = team;
 	}
 
 
+	@Override
 	public void init(){
 		ArrayList<Integer> pieces= new ArrayList<>(12);
 		ArrayList<Integer> nbP = new ArrayList<>(12);
@@ -107,6 +108,7 @@ public class RandomAI {
 
 	}
 
+	@Override
 	public void makeAMove(){
 		do {
 			int tmp = rnd.nextInt(piecesPosition.size());
@@ -122,28 +124,28 @@ public class RandomAI {
 				boolean[] authorisedMove = this.getAuthorisedMove(x, y);
 				if (authorisedMove[0]) {
 					((Movable) (Board.caseBoard[x][y].getContent())).move(x, y, x - 1, y);
-					isOK=false;
+					isPieceMoved =false;
 					piecesPosition.get(tmp).x=x-1;
 				}
 				else if (authorisedMove[1]) {
 					((Movable) (Board.caseBoard[x][y].getContent())).move(x, y, x + 1, y);
-					isOK=false;
+					isPieceMoved =false;
 					piecesPosition.get(tmp).x=x+1;
 				}
 				else if (authorisedMove[2]) {
 					((Movable) (Board.caseBoard[x][y].getContent())).move(x, y, x, y - 1);
-					isOK=false;
+					isPieceMoved =false;
 					piecesPosition.get(tmp).y=y-1;
 				}
 				else if (authorisedMove[3]) {
 					((Movable) (Board.caseBoard[x][y].getContent())).move(x, y, x, y + 1);
-					isOK=false;
+					isPieceMoved =false;
 					piecesPosition.get(tmp).y=y+1;
 				}
 
 			}
-		}while(isOK);
-		isOK=true;
+		}while(isPieceMoved);
+		isPieceMoved =true;
 		Main.nbCoup++;
 	}
 
