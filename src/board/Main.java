@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import pieces.Flag;
 import pieces.Team;
@@ -19,7 +20,7 @@ public class Main extends Application {
 
 	public static int nbCoup=0;
 	public static boolean isGameStarted = false;
-	public static Team playerTeam = Team.Red;
+	public static Team playerTeam= Team.Red;
 	public static AI player2;
 
 
@@ -31,7 +32,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage){
 		BorderPane root = new BorderPane();
-		primaryStage.setScene(new Scene(root,900,610));
+		primaryStage.setScene(new Scene(root,1100,800));
 		primaryStage.setTitle("Stratego");
 
 		Board board = new Board();
@@ -41,10 +42,14 @@ public class Main extends Application {
 
 		SelectionPanel select = new SelectionPanel();
 
+		ControlPanel control = new ControlPanel();
+		VBox top = new VBox();
+		top.getChildren().addAll(menu,control);
+
 
 		root.setCenter(board);
 		root.setBottom(select);
-		root.setTop(menu);
+		root.setTop(top);
 		try{
 			FileInputStream fis  = new FileInputStream("./images/stratego.png");
 			Image img =new Image(fis);
@@ -54,8 +59,6 @@ public class Main extends Application {
 		}
 		primaryStage.show();
 
-		player2 = new SmarterAI(Team.Blue);
-		player2.init();
 
 	}
 

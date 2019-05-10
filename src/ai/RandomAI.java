@@ -12,7 +12,7 @@ public class RandomAI implements AI {
 
 	private Random rnd = new Random();
 	private Team team;
-	private ArrayList<Tuple> piecesPosition = new ArrayList<>(40);
+	private ArrayList<Coordinates> piecesPosition = new ArrayList<>(40);
 	private boolean isPieceMoved =true;
 
 	public RandomAI(Team team){
@@ -100,7 +100,7 @@ public class RandomAI implements AI {
 					nbP.remove(tmp);
 					pieces.remove(tmp);
 				}
-				piecesPosition.add(new Tuple(i,j));
+				piecesPosition.add(new Coordinates(i,j));
 			}
 		}
 		debug(piecesPosition);
@@ -182,8 +182,8 @@ public class RandomAI implements AI {
 		return authorisedMove;
 	}
 
-	public static void debug(ArrayList<Tuple> P){
-		for(Tuple i : P)
+	public static void debug(ArrayList<Coordinates> P){
+		for(Coordinates i : P)
 			System.out.println(i);
 	}
 

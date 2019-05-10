@@ -1,7 +1,6 @@
 package ai;
 
 import board.Board;
-import board.Main;
 import pieces.*;
 import pieces.Team;
 
@@ -12,7 +11,7 @@ import java.util.Random;
 public class SmarterAI implements AI{
 
 	private Team team;
-	private ArrayList<Tuple> piecesPosition = new ArrayList<>(40);
+	private ArrayList<Coordinates> piecesPosition = new ArrayList<>(40);
 	private Random rnd = new Random();
 	private boolean isPieceMoved =true;
 
@@ -61,12 +60,12 @@ public class SmarterAI implements AI{
 				int tmp2 = rnd.nextInt(pieces.size());
 
 				if ((i == tmp - 1 || i == tmp || i == tmp + 1) && j == 0) {  //pour pas ecraser le flag et bomb
-					piecesPosition.add(new Tuple(i, j));
+					piecesPosition.add(new Coordinates(i, j));
 					continue;
 				}
 
 				if ((i == tmp || i == tmp + 1) && j == 1) {
-					piecesPosition.add(new Tuple(i, j));
+					piecesPosition.add(new Coordinates(i, j));
 					continue;
 				}
 
@@ -117,7 +116,7 @@ public class SmarterAI implements AI{
 					nbP.remove(tmp2);
 					pieces.remove(tmp2);
 				}
-				piecesPosition.add(new Tuple(i, j));
+				piecesPosition.add(new Coordinates(i, j));
 			}
 		}
 	}

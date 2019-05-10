@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -17,10 +18,15 @@ public class MyMenuBarre extends MenuBar {
         Menu fichier =new Menu("Jeu");
         Menu option = new Menu ("Options");
         Menu aide = new Menu ("Aide");
+        Menu game = new Menu("game");
+
         MenuItem regles =new MenuItem("Règles");
         MenuItem exit =new MenuItem("Quitter");
         MenuItem start = new MenuItem("Start");
         MenuItem stop = new MenuItem("Stop");
+        MenuItem save = new MenuItem("save");
+        MenuItem load = new MenuItem("Load");
+
         start.setOnAction(e->Main.isGameStarted=true);
         stop.setOnAction(e->{
             Main.isGameStarted=false;
@@ -28,6 +34,16 @@ public class MyMenuBarre extends MenuBar {
             SelectionPanel.reset();
             Main.nbCoup=0;
 
+        });
+        load.setOnAction(e -> {
+            FileChooser fc = new FileChooser();
+            fc.setTitle("Load game");
+            fc.showOpenDialog(new Stage());
+        });
+        save.setOnAction(e -> {
+            FileChooser fc= new FileChooser();
+            fc.setTitle("Save game");
+            fc.showSaveDialog(new Stage());
         });
 
         exit.setOnAction(event -> System.exit(0));
@@ -91,8 +107,9 @@ public class MyMenuBarre extends MenuBar {
                 secondaryWindow.show();
             }
         });
+        game.getItems().addAll(save,load);
         option.getItems().add(exit);
-        fichier.getItems().addAll(start, stop);
+        fichier.getItems().addAll(start, stop, game);
         aide.getItems().addAll(regles);
 
 
