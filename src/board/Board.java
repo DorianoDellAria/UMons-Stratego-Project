@@ -6,7 +6,7 @@ import pieces.Obstacle;
 public class Board extends GridPane {
 
     public static Case [][] caseBoard =new Case[10][10];
-    public static Boolean isClicked = false;
+    public static boolean isClicked = false;
     public static int xBuffer;
     public static int yBuffer;
 
@@ -50,7 +50,7 @@ public class Board extends GridPane {
             for (int j = 0; j < 10; j++) {
                 System.out.print("|");
                 if(caseBoard[i][j].getContent()!=null)
-                    System.out.print(caseBoard[i][j].getContent().getIMG());
+                    System.out.print(caseBoard[i][j].getContent().getIMGPath());
                 else
                     System.out.print("null");
             }

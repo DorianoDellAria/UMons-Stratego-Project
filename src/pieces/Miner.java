@@ -1,27 +1,13 @@
 package pieces;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 public class Miner extends AbstractMovable implements Movable{
 
 	private final int VALUE= 3;
-	private ImageView img;
+	private String img = "./images/3.png";
 
 	public Miner(Team team){
 		super(team);
-		try {
-			FileInputStream fis = new FileInputStream("./images/3.png");
-			Image tmp = new Image(fis);
-			this.img = new ImageView(tmp);
-			this.img.setFitHeight(45);
-			this.img.setPreserveRatio(true);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
 	}
 
 	@Override
@@ -40,5 +26,5 @@ public class Miner extends AbstractMovable implements Movable{
 	}
 
 	@Override
-	public ImageView getIMG(){return this.img;}
+	public String getIMGPath(){return this.img;}
 }

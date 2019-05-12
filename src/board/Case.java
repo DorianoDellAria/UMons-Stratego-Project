@@ -1,16 +1,19 @@
 package board;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import pieces.*;
 
-public class Case extends StackPane {
+import java.io.*;
+
+public class Case extends StackPane implements Serializable {
 
     private Piece content;
-    public final int x;
-    public final int y;
+    public int x;
+    public int y;
 
 
     public Case (Piece content, int x, int y){
@@ -117,8 +120,21 @@ public class Case extends StackPane {
                 rec.setFill(null);
             }
             rec.setStroke(Color.BLACK);
-            ImageView tmp = this.content.getIMG();
-            this.getChildren().addAll(rec,tmp);
+            try{
+                FileInputStream fis = new FileInputStream(this.content.getIMGPath());
+                try{
+                    Image tmp = new Image(fis);
+                    ImageView img = new ImageView(tmp);
+                    img.setFitHeight(45);
+                    img.setPreserveRatio(true);
+                    this.getChildren().addAll(rec, img);
+                }finally {
+                    fis.close();
+                }
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+
 
         }
         else{
@@ -130,6 +146,19 @@ public class Case extends StackPane {
         }
 
 
+    }
+
+    private void writeObject(ObjectOutputStream out)throws IOException{
+        out.writeObject(this.content);
+        out.writeObject(this.x);
+        out.writeObject(this.y);
+    }
+
+
+    private void readObject(ObjectInputStream in)throws IOException, ClassNotFoundException{
+        this.setContent((Piece)in.readObject());
+        this.x=(int)in.readObject();
+        this.y=(int)in.readObject();
     }
 
 

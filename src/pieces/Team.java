@@ -1,5 +1,7 @@
 package pieces;
 
-public enum Team {
-	Blue,Red;
+import java.io.Serializable;
+
+public enum Team implements Serializable {
+	Blue,Red
 }

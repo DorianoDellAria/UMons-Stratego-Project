@@ -5,10 +5,14 @@ import board.Main;
 import pieces.*;
 import pieces.Team;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class RandomAI implements AI {
+public class RandomAI implements AI, Serializable {
 
 	private Random rnd = new Random();
 	private Team team;
@@ -187,6 +191,18 @@ public class RandomAI implements AI {
 			System.out.println(i);
 	}
 
+	private void writeObject(ObjectOutputStream out) throws IOException {
+		out.writeObject(this.team);
+		out.writeObject(this.piecesPosition);
+		out.writeObject(this.isPieceMoved);
+	}
 
+	private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+		this.rnd = new Random();
+		this.team = (Team)in.readObject();
+		this.piecesPosition = (ArrayList<Coordinates>)in.readObject();
+		this.isPieceMoved = (boolean)in.readObject();
+
+	}
 
 }

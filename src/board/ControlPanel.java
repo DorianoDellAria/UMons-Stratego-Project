@@ -10,7 +10,7 @@ import pieces.Team;
 
 public class ControlPanel extends HBox {
 
-	public ControlPanel(){
+	public ControlPanel(SelectionPanel s){
 		this.setPrefHeight(80);
 		this.setPrefWidth(500);
 
@@ -61,6 +61,7 @@ public class ControlPanel extends HBox {
 					Main.playerTeam=Team.Red;
 				}
 			}
+			s.setVisible(true);
 		});
 
 

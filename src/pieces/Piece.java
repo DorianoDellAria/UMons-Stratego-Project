@@ -2,7 +2,11 @@ package pieces;
 
 import javafx.scene.image.ImageView;
 
-public abstract class Piece{
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
+public abstract class Piece implements Serializable {
 	public final Team team;
 
 	public Piece(Team team){
@@ -22,7 +26,14 @@ public abstract class Piece{
 	}
 
 	public abstract int getVALUE();
-	public abstract ImageView getIMG();
+	public abstract String getIMGPath();
+
+	private void writeObject(ObjectOutputStream out) throws IOException {
+		out.writeObject(team);
+	}
+
+
+
 
 
 }
