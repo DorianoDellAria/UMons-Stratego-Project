@@ -20,7 +20,7 @@ public class Main extends Application {
 
 	public static int nbCoup=0;
 	public static boolean isGameStarted = false;
-	public static Team playerTeam= Team.Red;
+	public static Team playerTeam;
 	public static AI player2;
 
 
@@ -42,7 +42,7 @@ public class Main extends Application {
 
 		SelectionPanel select = new SelectionPanel();
 
-		ControlPanel control = new ControlPanel();
+		ControlPanel control = new ControlPanel(select);
 		VBox top = new VBox();
 		top.getChildren().addAll(menu,control);
 

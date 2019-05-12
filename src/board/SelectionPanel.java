@@ -17,6 +17,7 @@ public class SelectionPanel extends ScrollPane {
 		this.setContent(container);
 		this.setPrefHeight(65);
 		this.setPrefWidth(700);
+		this.setVisible(false);
 	}
 
 	private static void setButton(){

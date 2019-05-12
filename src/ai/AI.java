@@ -1,6 +1,6 @@
 package ai;
 
-public interface AI {
+public interface AI  {
 
 	void makeAMove();
 	void init();

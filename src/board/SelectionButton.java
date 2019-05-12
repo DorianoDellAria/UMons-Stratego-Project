@@ -10,6 +10,7 @@ import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 
 public class SelectionButton extends StackPane {
@@ -24,17 +25,20 @@ public class SelectionButton extends StackPane {
 		this.rank= rank;
 		this.maxPiece = maxPiece;
 		Rectangle rec = new Rectangle(60,40);
-		Text txt = new Text(Integer.toString(this.rank));
 
 
 		int i=this.rank;
 			try{
 				FileInputStream fis = new FileInputStream("./images/"+i+".png");
-				Image tmp = new Image(fis);
-				this.img = new ImageView(tmp);
-				this.img.setFitHeight(35);
-				this.img.setPreserveRatio(true);
-			}catch(FileNotFoundException e){
+				try {
+					Image tmp = new Image(fis);
+					this.img = new ImageView(tmp);
+					this.img.setFitHeight(35);
+					this.img.setPreserveRatio(true);
+				}finally {
+					fis.close();
+				}
+			}catch(IOException e){
 				e.printStackTrace();
 			}
 

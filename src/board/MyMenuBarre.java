@@ -1,6 +1,7 @@
 package board;
 
 
+import ai.AI;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
@@ -9,7 +10,9 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import pieces.Team;
 
+import java.io.*;
 
 
 public class MyMenuBarre extends MenuBar {
@@ -38,13 +41,49 @@ public class MyMenuBarre extends MenuBar {
         load.setOnAction(e -> {
             FileChooser fc = new FileChooser();
             fc.setTitle("Load game");
-            fc.showOpenDialog(new Stage());
+            File file = fc.showOpenDialog(new Stage());
+            try{
+                FileInputStream fis = new FileInputStream(file);
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                try{
+                    Board.caseBoard=(Case[][]) ois.readObject();
+                    Main.player2 = (AI)ois.readObject();
+                    Main.playerTeam = (Team)ois.readObject();
+                    Main.nbCoup = (Integer)ois.readObject();
+                    Main.isGameStarted = (Boolean)ois.readObject();
+                }finally {
+                    fis.close();
+                    ois.close();
+                }
+            }catch(IOException | ClassNotFoundException i){
+                i.printStackTrace();
+            }
         });
+
+
         save.setOnAction(e -> {
             FileChooser fc= new FileChooser();
             fc.setTitle("Save game");
-            fc.showSaveDialog(new Stage());
+            File file = fc.showSaveDialog(new Stage());
+            try{
+                FileOutputStream fos = new FileOutputStream(file);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                try{
+                    oos.writeObject(Board.caseBoard);
+                    oos.writeObject(Main.player2);
+                    oos.writeObject(Main.playerTeam);
+                    oos.writeObject(Main.nbCoup);
+                    oos.writeObject(Main.isGameStarted);
+                }finally {
+                    fos.close();
+                    oos.close();
+                }
+            }catch(IOException i){
+                i.printStackTrace();
+            }
         });
+
+
 
         exit.setOnAction(event -> System.exit(0));
         regles.setOnAction(new EventHandler<ActionEvent>(){

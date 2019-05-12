@@ -4,11 +4,12 @@ import board.Board;
 import pieces.*;
 import pieces.Team;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
 
-public class SmarterAI implements AI{
+public class SmarterAI implements AI, Serializable {
 
 	private Team team;
 	private ArrayList<Coordinates> piecesPosition = new ArrayList<>(40);
