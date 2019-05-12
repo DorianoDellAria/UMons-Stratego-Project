@@ -37,7 +37,6 @@ public class Main extends Application {
 
 		Board board = new Board();
 
-
 		MyMenuBarre menu=new MyMenuBarre();
 
 		SelectionPanel select = new SelectionPanel();
@@ -46,10 +45,10 @@ public class Main extends Application {
 		VBox top = new VBox();
 		top.getChildren().addAll(menu,control);
 
-
 		root.setCenter(board);
 		root.setBottom(select);
 		root.setTop(top);
+
 		try{
 			FileInputStream fis  = new FileInputStream("./images/stratego.png");
 			Image img =new Image(fis);
