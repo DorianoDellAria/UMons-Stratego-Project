@@ -50,7 +50,8 @@ public class SelectionPanel extends ScrollPane {
 		save.setOnAction(e ->{
 			FileChooser fc = new FileChooser();
 			fc.setTitle("Save configuration");
-			fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("data file","*.dat"));
+			fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("position file","*.position"));
+			fc.setInitialDirectory(new File("./saves"));
 			File file = fc.showSaveDialog(new Stage());
 			try{
 				FileOutputStream fos = new FileOutputStream(file);
@@ -82,7 +83,8 @@ public class SelectionPanel extends ScrollPane {
 		load.setOnAction(e ->{
 			FileChooser fc = new FileChooser();
 			fc.setTitle("Load configuration");
-			fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("data file", "*.dat"));
+			fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("position file", "*.position"));
+			fc.setInitialDirectory(new File("./saves"));
 			File file = fc.showOpenDialog(new Stage());
 			try{
 				FileInputStream fis = new FileInputStream(file);
