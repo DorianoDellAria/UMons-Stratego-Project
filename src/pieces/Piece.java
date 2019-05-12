@@ -1,6 +1,5 @@
 package pieces;
 
-import javafx.scene.image.ImageView;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;

@@ -17,7 +17,7 @@ import java.io.*;
 
 public class MyMenuBarre extends MenuBar {
 
-    public MyMenuBarre () {
+    public MyMenuBarre() {
         Menu fichier =new Menu("Jeu");
         Menu option = new Menu ("Options");
         Menu aide = new Menu ("Aide");

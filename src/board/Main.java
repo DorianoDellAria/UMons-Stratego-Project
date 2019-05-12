@@ -1,8 +1,6 @@
 package board;
 
 import ai.AI;
-import ai.RandomAI;
-import ai.SmarterAI;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -13,7 +11,7 @@ import pieces.Flag;
 import pieces.Team;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 
 
 public class Main extends Application {
@@ -51,9 +49,13 @@ public class Main extends Application {
 
 		try{
 			FileInputStream fis  = new FileInputStream("./images/stratego.png");
-			Image img =new Image(fis);
-			primaryStage.getIcons().add(img);
-		} catch (FileNotFoundException e) {
+			try {
+				Image img = new Image(fis);
+				primaryStage.getIcons().add(img);
+			}finally {
+				fis.close();
+			}
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		primaryStage.show();

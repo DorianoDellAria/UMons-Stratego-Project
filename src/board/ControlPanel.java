@@ -28,7 +28,10 @@ public class ControlPanel extends HBox {
 		start.setVisible(false);
 		this.setMargin(start, new Insets(10));
 		start.setFocusTraversable(false);
-		start.setOnAction(e -> Main.isGameStarted=true);
+		start.setOnAction(e -> {
+			Main.isGameStarted=true;
+			s.setVisible(false);
+		});
 
 		Button Placement = new Button("Start Placement");
 		this.setMargin(Placement,new Insets(10));
