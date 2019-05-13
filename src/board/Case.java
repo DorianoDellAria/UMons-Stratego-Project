@@ -153,7 +153,7 @@ public class Case extends StackPane {
                     fis = new FileInputStream(this.content.getIMGPath());
                 }
                 else{
-                    fis = new FileInputStream("./images/logo.png");
+                    fis = new FileInputStream("./images/stratego2.png");
                 }
                 try{
                     Image tmp = new Image(fis);
