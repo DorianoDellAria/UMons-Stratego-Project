@@ -161,16 +161,16 @@ public class SmarterAI implements AI, Serializable {
 	}
 
 	private Coordinates isPieceNear(int x, int y){
-		if(x!=0 && Board.caseBoard[x-1][y].getContent()!=null && Board.caseBoard[x-1][y].getContent().team!=this.team){
+		if(x!=0 && Board.caseBoard[x-1][y].getContent()!=null && Board.caseBoard[x-1][y].getContent().team!=this.team && Board.caseBoard[x-1][y].getContent().team!=null){
 			return new Coordinates(x-1,y);
 		}
-		else if (x != 9 && Board.caseBoard[x+1][y].getContent()!=null && Board.caseBoard[x+1][y].getContent().team != this.team){
+		else if (x != 9 && Board.caseBoard[x+1][y].getContent()!=null && Board.caseBoard[x+1][y].getContent().team != this.team && Board.caseBoard[x+1][y].getContent().team != null){
 			return new Coordinates(x+1,y);
 		}
-		else if(y!=0 && Board.caseBoard[x][y-1].getContent()!=null && Board.caseBoard[x][y-1].getContent().team != this.team){
+		else if(y!=0 && Board.caseBoard[x][y-1].getContent()!=null && Board.caseBoard[x][y-1].getContent().team != this.team && Board.caseBoard[x][y-1].getContent().team != null){
 			return new Coordinates(x,y-1);
 		}
-		else if(y!=9 && Board.caseBoard[x][y+1].getContent()!=null && Board.caseBoard[x][y+1].getContent().team != this.team){
+		else if(y!=9 && Board.caseBoard[x][y+1].getContent()!=null && Board.caseBoard[x][y+1].getContent().team != this.team && Board.caseBoard[x][y+1].getContent().team != null){
 			return new Coordinates(x,y+1);
 		}
 

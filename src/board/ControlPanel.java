@@ -32,6 +32,10 @@ public class ControlPanel extends HBox {
 			Main.isGameStarted=true;
 			s.setVisible(false);
 			this.setVisible(false);
+			if(Main.playerTeam==Team.Blue){
+				Main.nbCoup=1;
+				Main.player2.makeAMove();
+			}
 		});
 
 		Button Placement = new Button("Start Placement");
