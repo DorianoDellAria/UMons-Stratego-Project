@@ -8,12 +8,14 @@ import javafx.scene.shape.Rectangle;
 import pieces.*;
 
 import java.io.*;
+import java.util.concurrent.TimeUnit;
 
 public class Case extends StackPane {
 
     private Piece content;
     public final int x;
     public final int y;
+    private boolean isPieceMoved =false;
 
 
     public Case (Piece content, int x, int y){
@@ -31,11 +33,17 @@ public class Case extends StackPane {
                     Board.yBuffer = this.y;
                     Board.isClicked = true;
                 } else if (Board.isClicked && (Board.xBuffer != this.x || Board.yBuffer != this.y)) {
-                    ((Movable) Board.caseBoard[Board.xBuffer][Board.yBuffer].getContent()).move(Board.xBuffer, Board.yBuffer, this.x, this.y);
+                    if(this.content!=null){
+                       showImage(this.x,this.y);
+                    }
+                    isPieceMoved = ((Movable) Board.caseBoard[Board.xBuffer][Board.yBuffer].getContent()).move(Board.xBuffer, Board.yBuffer, this.x, this.y);
                     Board.isClicked = false;
+                }
+                if(isPieceMoved){
                     Main.nbCoup++;
                     Main.checkGameOver();
                     Main.player2.makeAMove();
+                    isPieceMoved=false;
                 }
             }
             else{
@@ -105,6 +113,25 @@ public class Case extends StackPane {
         return this.content;
     }
 
+    private static void showImage(int x, int y){
+        try{
+            FileInputStream fis = new FileInputStream(Board.caseBoard[x][y].getContent().getIMGPath());
+            try{
+                Image tmp = new Image(fis);
+                ImageView iv = new ImageView(tmp);
+                iv.setFitHeight(45);
+                iv.setPreserveRatio(true);
+                Board.caseBoard[x][y].getChildren().addAll(iv);
+                TimeUnit.SECONDS.sleep(3);
+                Board.caseBoard[x][y].getChildren().remove(2);
+            }finally {
+                fis.close();
+            }
+        }catch(IOException | InterruptedException i){
+            i.printStackTrace();
+        }
+    }
+
     public void setContent (Piece p){
         this.content=p;
         if(p!=null) {
@@ -121,7 +148,13 @@ public class Case extends StackPane {
             }
             rec.setStroke(Color.BLACK);
             try{
-                FileInputStream fis = new FileInputStream(this.content.getIMGPath());
+                FileInputStream fis;
+                if(p.team==Main.playerTeam || p.team ==null) {
+                    fis = new FileInputStream(this.content.getIMGPath());
+                }
+                else{
+                    fis = new FileInputStream("./images/logo.png");
+                }
                 try{
                     Image tmp = new Image(fis);
                     ImageView img = new ImageView(tmp);

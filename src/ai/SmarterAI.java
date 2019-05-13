@@ -5,6 +5,9 @@ import board.Main;
 import pieces.*;
 import pieces.Team;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
@@ -192,6 +195,20 @@ public class SmarterAI implements AI, Serializable {
 			authorisedMove.add(new Coordinates(x,y+1));
 		}
 		return authorisedMove;
+	}
+
+	private void writeObject(ObjectOutputStream out) throws IOException {
+		out.writeObject(this.team);
+		out.writeObject(this.piecesPosition);
+		out.writeObject(this.isPieceMoved);
+	}
+
+	private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+		this.rnd = new Random();
+		this.team = (Team)in.readObject();
+		this.piecesPosition = (ArrayList<Coordinates>)in.readObject();
+		this.isPieceMoved = (boolean)in.readObject();
+
 	}
 
 }

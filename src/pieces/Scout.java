@@ -12,7 +12,7 @@ public class Scout extends AbstractMovable implements Movable{
 
 
 	@Override
-	public void move(int x1, int y1, int x2, int y2) {
+	public boolean move(int x1, int y1, int x2, int y2) {
 		if(Board.caseBoard[x2][y2].getContent()==null || Board.caseBoard[x1][y1].getContent().team!=Board.caseBoard[x2][y2].getContent().team && Board.caseBoard[x2][y2].getContent().team!=null ) {
 			if ((x1 == x2 || y1 == y2) && checkObstacle(x1,y1,x2,y2)) {
 				if (Board.caseBoard[x2][y2].getContent() == null ) {
@@ -21,8 +21,11 @@ public class Scout extends AbstractMovable implements Movable{
 					Board.caseBoard[x2][y2].setContent(this.fight(Board.caseBoard[x2][y2].getContent()));
 				}
 				Board.caseBoard[x1][y1].setContent(null);
+				return true;
 			}
+			return false;
 		}
+		return false;
 	}
 
 	public boolean checkObstacle(int x1, int y1, int x2, int y2){

@@ -48,6 +48,7 @@ public class MyMenuBarre extends MenuBar {
                 FileInputStream fis = new FileInputStream(file);
                 ObjectInputStream ois = new ObjectInputStream(fis);
                 try{
+                    Main.playerTeam = (Team)ois.readObject();
                     ArrayList<Integer> tmp = (ArrayList<Integer>)ois.readObject();
                     ArrayList<Team> team = (ArrayList<Team>)ois.readObject();
                     int count=0;
@@ -110,7 +111,6 @@ public class MyMenuBarre extends MenuBar {
                         }
                     }
                     Main.player2 = (AI)ois.readObject();
-                    Main.playerTeam = (Team)ois.readObject();
                     Main.nbCoup = (Integer)ois.readObject();
                     Main.isGameStarted = (Boolean)ois.readObject();
                 }finally {
@@ -135,6 +135,7 @@ public class MyMenuBarre extends MenuBar {
                 try{
                     ArrayList<Integer> tmp = new ArrayList<>();
                     ArrayList<Team> team = new ArrayList<>();
+                    oos.writeObject(Main.playerTeam);
                     for(int i =0 ; i<10 ;i++){
                         for(int j =0;j<10;j++){
                             if(Board.caseBoard[i][j].getContent()!=null) {
@@ -150,7 +151,6 @@ public class MyMenuBarre extends MenuBar {
                     oos.writeObject(tmp);
                     oos.writeObject(team);
                     oos.writeObject(Main.player2);
-                    oos.writeObject(Main.playerTeam);
                     oos.writeObject(Main.nbCoup);
                     oos.writeObject(Main.isGameStarted);
                 }finally {

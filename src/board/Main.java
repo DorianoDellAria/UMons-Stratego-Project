@@ -12,8 +12,6 @@ import pieces.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import static pieces.Team.Blue;
-import static pieces.Team.Red;
 
 
 public class Main extends Application {
@@ -67,10 +65,10 @@ public class Main extends Application {
 
 
     public static void checkGameOver() {   //à optimiser ex: retenir la place des flags pour eviter de faire un double for
-        Boolean redFlag = false;
-        Boolean blueFlag = false;
-        Boolean redMiner = false;
-        Boolean blueMiner = false;
+        boolean redFlag = false;
+        boolean blueFlag = false;
+        boolean redMiner = false;
+        boolean blueMiner = false;
         boolean trappedBlueFlag = false;
         boolean trappedRedFlag = false;
         boolean redMovable = false;
@@ -148,7 +146,7 @@ public class Main extends Application {
 
 
 
-                if (Board.caseBoard[i][j].getContent() instanceof Flag && Board.caseBoard[i][j].getContent().team == Red) {
+                if (Board.caseBoard[i][j].getContent() instanceof Flag && Board.caseBoard[i][j].getContent().team == Team.Red) {
                     redFlag = true;
                     if (i >= 1 && j >= 1 && i <= 8 && j <= 8) {
                         if (Board.caseBoard[i + 1][j].getContent() instanceof Bomb||Board.caseBoard[i + 1][j].getContent()instanceof Obstacle
@@ -210,7 +208,7 @@ public class Main extends Application {
                 //démineur rouge
 
 
-                if (Board.caseBoard[i][j].getContent() instanceof Miner && Board.caseBoard[i][j].getContent().team == Red)
+                if (Board.caseBoard[i][j].getContent() instanceof Miner && Board.caseBoard[i][j].getContent().team == Team.Red)
                     redMiner = true;
 
 
@@ -345,27 +343,27 @@ public class Main extends Application {
             }
         }
         if (blueFlag && !redFlag){
-            new DisplayVictory(Blue);
+            new DisplayVictory(Team.Blue);
             isGameStarted=false;}
 
         if (!blueFlag && redFlag){
-            new DisplayVictory(Red);
+            new DisplayVictory(Team.Red);
             isGameStarted=false;}
 
         if (!redMiner && trappedBlueFlag){
-            new DisplayVictory(Blue);
+            new DisplayVictory(Team.Blue);
             isGameStarted=false;}
 
         if (!blueMiner && trappedRedFlag){
-            new DisplayVictory(Red);
+            new DisplayVictory(Team.Red);
             isGameStarted=false;}
 
         if(!unblockedBluePiece){
-            new DisplayVictory(Red);
+            new DisplayVictory(Team.Red);
             isGameStarted=false;}
 
         if(!unblockedRedPiece){
-            new DisplayVictory(Blue);
+            new DisplayVictory(Team.Blue);
             isGameStarted=false;}
 
     }
