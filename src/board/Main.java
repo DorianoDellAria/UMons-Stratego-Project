@@ -81,120 +81,120 @@ public class Main extends Application {
 
 		for(int i=0 ;i<10 ; i++){
 			for(int j = 0 ; j<10 ; j++){
-				if(Board.caseBoard[i][j].getContent() instanceof Flag && Board.caseBoard[i][j].getContent().team==Team.Blue)
-					blueFlag=true;
-					if( i>=1 &&j>=1&&i<=8&&j<=8) {
-					if (Board.caseBoard[i+1][j].getContent() instanceof Bomb
-							&& Board.caseBoard[i-1][j].getContent() instanceof Bomb
-							&& Board.caseBoard[i][j+1].getContent() instanceof Bomb
-							&& Board.caseBoard[i][j-1].getContent() instanceof Bomb) {
-						trappedBlueFlag = true;
-					}
-				}
+				if(Board.caseBoard[i][j].getContent() instanceof Flag && Board.caseBoard[i][j].getContent().team==Team.Blue) {
+                    blueFlag = true;
+                    if (i >= 1 && j >= 1 && i <= 8 && j <= 8) {
+                        if (Board.caseBoard[i + 1][j].getContent() instanceof Bomb
+                                && Board.caseBoard[i - 1][j].getContent() instanceof Bomb
+                                && Board.caseBoard[i][j + 1].getContent() instanceof Bomb
+                                && Board.caseBoard[i][j - 1].getContent() instanceof Bomb) {
+                            trappedBlueFlag = true;
+                        }
+                    }
 
-				if(i==0 &&j==0){
-					if (Board.caseBoard[i+1][j].getContent() instanceof Bomb
-							&& Board.caseBoard[i][j+1].getContent() instanceof Bomb){
-						trappedBlueFlag = true;
-					}
-				}
+                    if (i == 0 && j == 0) {
+                        if (Board.caseBoard[i + 1][j].getContent() instanceof Bomb
+                                && Board.caseBoard[i][j + 1].getContent() instanceof Bomb) {
+                            trappedBlueFlag = true;
+                        }
+                    }
 
-				if(i>=1&&j==0&&i<=8){
-					if (Board.caseBoard[i+1][j].getContent() instanceof Bomb
-							&& Board.caseBoard[i-1][j].getContent() instanceof Bomb
-							&& Board.caseBoard[i][j+1].getContent() instanceof Bomb){
-						trappedBlueFlag = true;
-					}
-				}
+                    if (i >= 1 && j == 0 && i <= 8) {
+                        if (Board.caseBoard[i + 1][j].getContent() instanceof Bomb
+                                && Board.caseBoard[i - 1][j].getContent() instanceof Bomb
+                                && Board.caseBoard[i][j + 1].getContent() instanceof Bomb) {
+                            trappedBlueFlag = true;
+                        }
+                    }
 
-				if(i==0&&j>=1&&j<=8){
-					if (Board.caseBoard[i+1][j].getContent() instanceof Bomb
-							&& Board.caseBoard[i][j+1].getContent() instanceof Bomb
-							&& Board.caseBoard[i][j-1].getContent() instanceof Bomb){
-						trappedBlueFlag = true;
-					}
-				}
+                    if (i == 0 && j >= 1 && j <= 8) {
+                        if (Board.caseBoard[i + 1][j].getContent() instanceof Bomb
+                                && Board.caseBoard[i][j + 1].getContent() instanceof Bomb
+                                && Board.caseBoard[i][j - 1].getContent() instanceof Bomb) {
+                            trappedBlueFlag = true;
+                        }
+                    }
 
-				if(i==9&&j==9){
-					if (Board.caseBoard[i-1][j].getContent() instanceof Bomb
-							&& Board.caseBoard[i][j-1].getContent() instanceof Bomb){
-						trappedBlueFlag = true;
-					}
-				}
+                    if (i == 9 && j == 9) {
+                        if (Board.caseBoard[i - 1][j].getContent() instanceof Bomb
+                                && Board.caseBoard[i][j - 1].getContent() instanceof Bomb) {
+                            trappedBlueFlag = true;
+                        }
+                    }
 
-				if(i==9 && j<=8&&j>=1){
-					if (Board.caseBoard[i-1][j].getContent() instanceof Bomb
-							&& Board.caseBoard[i][j+1].getContent() instanceof Bomb
-							&& Board.caseBoard[i][j-1].getContent() instanceof Bomb){
-						trappedBlueFlag = true;
-					}
-				}
+                    if (i == 9 && j <= 8 && j >= 1) {
+                        if (Board.caseBoard[i - 1][j].getContent() instanceof Bomb
+                                && Board.caseBoard[i][j + 1].getContent() instanceof Bomb
+                                && Board.caseBoard[i][j - 1].getContent() instanceof Bomb) {
+                            trappedBlueFlag = true;
+                        }
+                    }
 
-				if(i<=8&&j==9&&i>=1){
-					if (Board.caseBoard[i+1][j].getContent() instanceof Bomb
-							&& Board.caseBoard[i-1][j].getContent() instanceof Bomb
-							&& Board.caseBoard[i][j-1].getContent() instanceof Bomb){
-						trappedBlueFlag = true;
-					}
-				}
+                    if (i <= 8 && j == 9 && i >= 1) {
+                        if (Board.caseBoard[i + 1][j].getContent() instanceof Bomb
+                                && Board.caseBoard[i - 1][j].getContent() instanceof Bomb
+                                && Board.caseBoard[i][j - 1].getContent() instanceof Bomb) {
+                            trappedBlueFlag = true;
+                        }
+                    }
+                }
+				if(Board.caseBoard[i][j].getContent() instanceof Flag && Board.caseBoard[i][j].getContent().team== Red) {
+                    redFlag = true;
+                    if (i >= 1 && j >= 1 && i <= 8 && j <= 8) {
+                        if (Board.caseBoard[i + 1][j].getContent() instanceof Bomb
+                                && Board.caseBoard[i - 1][j].getContent() instanceof Bomb
+                                && Board.caseBoard[i][j + 1].getContent() instanceof Bomb
+                                && Board.caseBoard[i][j - 1].getContent() instanceof Bomb) {
+                            trappedRedFlag = true;
+                        }
+                    }
 
-				if(Board.caseBoard[i][j].getContent() instanceof Flag && Board.caseBoard[i][j].getContent().team== Red)
-					redFlag=true;
-					if( i>=1 &&j>=1&&i<=8&&j<=8) {
-						if (Board.caseBoard[i+1][j].getContent() instanceof Bomb
-								&& Board.caseBoard[i-1][j].getContent() instanceof Bomb
-								&& Board.caseBoard[i][j+1].getContent() instanceof Bomb
-								&& Board.caseBoard[i][j-1].getContent() instanceof Bomb) {
-							trappedRedFlag = true;
-						}
-					}
+                    if (i == 0 && j == 0) {
+                        if (Board.caseBoard[i + 1][j].getContent() instanceof Bomb
+                                && Board.caseBoard[i][j + 1].getContent() instanceof Bomb) {
+                            trappedRedFlag = true;
+                        }
+                    }
 
-					if(i==0 &&j==0){
-						if (Board.caseBoard[i+1][j].getContent() instanceof Bomb
-								&& Board.caseBoard[i][j+1].getContent() instanceof Bomb){
-							trappedRedFlag = true;
-						}
-					}
+                    if (i >= 1 && j == 0 && i <= 8) {
+                        if (Board.caseBoard[i + 1][j].getContent() instanceof Bomb
+                                && Board.caseBoard[i - 1][j].getContent() instanceof Bomb
+                                && Board.caseBoard[i][j + 1].getContent() instanceof Bomb) {
+                            trappedRedFlag = true;
+                        }
+                    }
 
-					if(i>=1&&j==0&&i<=8){
-						if (Board.caseBoard[i+1][j].getContent() instanceof Bomb
-								&& Board.caseBoard[i-1][j].getContent() instanceof Bomb
-								&& Board.caseBoard[i][j+1].getContent() instanceof Bomb){
-							trappedRedFlag = true;
-						}
-					}
+                    if (i == 0 && j >= 1 && j <= 8) {
+                        if (Board.caseBoard[i + 1][j].getContent() instanceof Bomb
+                                && Board.caseBoard[i][j + 1].getContent() instanceof Bomb
+                                && Board.caseBoard[i][j - 1].getContent() instanceof Bomb) {
+                            trappedRedFlag = true;
+                        }
+                    }
 
-					if(i==0&&j>=1&&j<=8){
-						if (Board.caseBoard[i+1][j].getContent() instanceof Bomb
-								&& Board.caseBoard[i][j+1].getContent() instanceof Bomb
-								&& Board.caseBoard[i][j-1].getContent() instanceof Bomb){
-							trappedRedFlag = true;
-						}
-					}
+                    if (i == 9 && j == 9) {
+                        if (Board.caseBoard[i - 1][j].getContent() instanceof Bomb
+                                && Board.caseBoard[i][j - 1].getContent() instanceof Bomb) {
+                            trappedRedFlag = true;
+                        }
+                    }
 
-					if(i==9&&j==9){
-						if (Board.caseBoard[i-1][j].getContent() instanceof Bomb
-								&& Board.caseBoard[i][j-1].getContent() instanceof Bomb){
-							trappedRedFlag = true;
-						}
-					}
+                    if (i == 9 && j <= 8 && j >= 1) {
+                        if (Board.caseBoard[i - 1][j].getContent() instanceof Bomb
+                                && Board.caseBoard[i][j + 1].getContent() instanceof Bomb
+                                && Board.caseBoard[i][j - 1].getContent() instanceof Bomb) {
+                            trappedRedFlag = true;
+                        }
+                    }
 
-					if(i==9 && j<=8&&j>=1){
-						if (Board.caseBoard[i-1][j].getContent() instanceof Bomb
-								&& Board.caseBoard[i][j+1].getContent() instanceof Bomb
-								&& Board.caseBoard[i][j-1].getContent() instanceof Bomb){
-							trappedRedFlag = true;
-						}
-					}
-
-					if(i<=8&&j==9&&i>=1){
-						if (Board.caseBoard[i+1][j].getContent() instanceof Bomb
-								&& Board.caseBoard[i-1][j].getContent() instanceof Bomb
-								&& Board.caseBoard[i][j-1].getContent() instanceof Bomb){
-							trappedRedFlag = true;
-						}
-					}
-
+                    if (i <= 8 && j == 9 && i >= 1) {
+                        if (Board.caseBoard[i + 1][j].getContent() instanceof Bomb
+                                && Board.caseBoard[i - 1][j].getContent() instanceof Bomb
+                                && Board.caseBoard[i][j - 1].getContent() instanceof Bomb) {
+                            trappedRedFlag = true;
+                        }
+                    }
+                }
 				if(Board.caseBoard[i][j].getContent() instanceof Miner && Board.caseBoard[i][j].getContent().team== Red)
 					redMiner=true;
 
