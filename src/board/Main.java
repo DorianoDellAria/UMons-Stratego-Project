@@ -344,23 +344,29 @@ public class Main extends Application {
                 }
             }
         }
-        if (blueFlag && !redFlag)
+        if (blueFlag && !redFlag){
             new DisplayVictory(Blue);
+            isGameStarted=false;}
 
-        if (!blueFlag && redFlag)
+        if (!blueFlag && redFlag){
             new DisplayVictory(Red);
+            isGameStarted=false;}
 
-        if (!redMiner && trappedBlueFlag)
+        if (!redMiner && trappedBlueFlag){
             new DisplayVictory(Blue);
+            isGameStarted=false;}
 
-        if (!blueMiner && trappedRedFlag)
+        if (!blueMiner && trappedRedFlag){
             new DisplayVictory(Red);
+            isGameStarted=false;}
 
-        if(!unblockedBluePiece)
+        if(!unblockedBluePiece){
             new DisplayVictory(Red);
+            isGameStarted=false;}
 
-        if(!unblockedRedPiece)
+        if(!unblockedRedPiece){
             new DisplayVictory(Blue);
+            isGameStarted=false;}
 
     }
 }
