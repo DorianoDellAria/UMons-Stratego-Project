@@ -122,7 +122,7 @@ public class Main extends Application {
 					}
 				}
 
-				if(i==9 && j<=8&&i>=1){
+				if(i==9 && j<=8&&j>=1){
 					if (Board.caseBoard[i-1][j].getContent() instanceof Bomb
 							&& Board.caseBoard[i][j+1].getContent() instanceof Bomb
 							&& Board.caseBoard[i][j-1].getContent() instanceof Bomb){
