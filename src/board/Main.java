@@ -18,52 +18,53 @@ import static pieces.Team.Red;
 
 public class Main extends Application {
 
-	public static int nbCoup=0;
-	public static boolean isGameStarted = false;
-	public static Team playerTeam;
-	public static AI player2;
+    public static int nbCoup=0;
+    public static boolean isGameStarted = false;
+    public static Team playerTeam;
+    public static AI player2;
 
 
 
-	public static void main(String[] args){
-		launch(args);
-	}
+    public static void main(String[] args){
+        launch(args);
+    }
 
-	@Override
-	public void start(Stage primaryStage){
-		BorderPane root = new BorderPane();
-		primaryStage.setScene(new Scene(root,1100,800));
-		primaryStage.setTitle("Stratego");
+    @Override
+    public void start(Stage primaryStage){
+        BorderPane root = new BorderPane();
+        primaryStage.setScene(new Scene(root,1100,800));
+        primaryStage.setTitle("Stratego");
 
-		Board board = new Board();
-
-		MyMenuBarre menu=new MyMenuBarre();
-
-		SelectionPanel select = new SelectionPanel();
-
-		ControlPanel control = new ControlPanel(select);
-		VBox top = new VBox();
-		top.getChildren().addAll(menu,control);
-
-		root.setCenter(board);
-		root.setBottom(select);
-		root.setTop(top);
-
-		try{
-			FileInputStream fis  = new FileInputStream("./images/stratego.png");
-			try {
-				Image img = new Image(fis);
-				primaryStage.getIcons().add(img);
-			}finally {
-				fis.close();
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		primaryStage.show();
+        Board board = new Board();
 
 
-	}
+
+        SelectionPanel select = new SelectionPanel();
+
+        ControlPanel control = new ControlPanel(select);
+        MyMenuBarre menu=new MyMenuBarre(control);
+        VBox top = new VBox();
+        top.getChildren().addAll(menu,control);
+
+        root.setCenter(board);
+        root.setBottom(select);
+        root.setTop(top);
+
+        try{
+            FileInputStream fis  = new FileInputStream("./images/stratego.png");
+            try {
+                Image img = new Image(fis);
+                primaryStage.getIcons().add(img);
+            }finally {
+                fis.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        primaryStage.show();
+
+    }
+
 
     public static void checkGameOver() {   //à optimiser ex: retenir la place des flags pour eviter de faire un double for
         Boolean redFlag = false;
