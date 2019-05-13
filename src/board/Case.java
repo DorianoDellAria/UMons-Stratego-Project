@@ -17,7 +17,7 @@ public class Case extends StackPane implements Serializable {
 
 
     public Case (Piece content, int x, int y){
-        Rectangle rectangle = new Rectangle(90,60);
+        Rectangle rectangle = new Rectangle(90,30);
         rectangle.setStroke(Color.BLACK);
         rectangle.setFill(null);
         this.getChildren().add(rectangle);
@@ -109,7 +109,7 @@ public class Case extends StackPane implements Serializable {
         this.content=p;
         if(p!=null) {
             this.getChildren().clear();
-            Rectangle rec = new Rectangle(90,60);
+            Rectangle rec = new Rectangle(90,30);
             if (p.team==Team.Red) {
                 rec.setFill(Color.RED);
             }
@@ -139,7 +139,7 @@ public class Case extends StackPane implements Serializable {
         }
         else{
             this.getChildren().clear();
-            Rectangle rec = new Rectangle(90,60);
+            Rectangle rec = new Rectangle(90,30);
             rec.setFill(null);
             rec.setStroke(Color.BLACK);
             this.getChildren().add(rec);

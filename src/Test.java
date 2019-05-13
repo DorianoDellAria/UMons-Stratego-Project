@@ -34,7 +34,6 @@ public class Test extends TestCase{
         Board t=new Board();
         final Marshal marshalB=new Marshal(Team.Blue);
         final Scout scoutR=new Scout(Team.Blue);
-        final Bomb bombB =new Bomb(Team.Red);
         final Miner minerB=new Miner(Team.Blue);
         final Miner minerR=new Miner(Team.Red);
 
@@ -69,6 +68,18 @@ public class Test extends TestCase{
         marshalB.move(7,1,8,1 );                    //test move pour une pièce sur une case occupée par une piece de Team adverse
         assertNull(t.caseBoard[7][1].getContent());                 //voir testfight() pour plus de cas
         assertSame(t.caseBoard[8][1].getContent(),marshalB);
+
+
+        t.caseBoard[5][5].setContent(scoutR);
+        t.caseBoard[5][6].setContent(scoutR);
+        scoutR.move(5,5,5,7);                       //test move pour une pièce scout passant par dessus une pièce
+        assertNull(t.caseBoard[5][7].getContent());
+        assertSame(t.caseBoard[5][5].getContent(),scoutR);
+    }
+
+    @org.junit.Test
+    public static void checkGameOver(){
+
     }
 
     public static void main(String[] arg){
