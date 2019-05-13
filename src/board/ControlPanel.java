@@ -31,6 +31,7 @@ public class ControlPanel extends HBox {
 		start.setOnAction(e -> {
 			Main.isGameStarted=true;
 			s.setVisible(false);
+			this.setVisible(false);
 		});
 
 		Button Placement = new Button("Start Placement");
@@ -70,6 +71,8 @@ public class ControlPanel extends HBox {
 
 		this.getChildren().addAll(Placement, combo, team, start);
 	}
+
+
 
 
 }

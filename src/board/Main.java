@@ -3,23 +3,18 @@ package board;
 import ai.AI;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import pieces.Bomb;
 import pieces.Flag;
 import pieces.Miner;
 import pieces.Team;
-import board.DisplayVictory;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import static pieces.Team.Blue;
-import static pieces.Team.Red;
 
 
 public class Main extends Application {
@@ -43,11 +38,12 @@ public class Main extends Application {
 
 		Board board = new Board();
 
-		MyMenuBarre menu=new MyMenuBarre();
+
 
 		SelectionPanel select = new SelectionPanel();
 
 		ControlPanel control = new ControlPanel(select);
+		MyMenuBarre menu=new MyMenuBarre(control);
 		VBox top = new VBox();
 		top.getChildren().addAll(menu,control);
 
@@ -72,10 +68,10 @@ public class Main extends Application {
 	}
 
 	public static void checkGameOver(){   //à optimiser ex: retenir la place des flags pour eviter de faire un double for
-		Boolean redFlag=false;
-		Boolean blueFlag=false;
-		Boolean redMiner=false;
-		Boolean blueMiner=false;
+		boolean redFlag=false;
+		boolean blueFlag=false;
+		boolean redMiner=false;
+		boolean blueMiner=false;
 		boolean trappedBlueFlag=false;
 		boolean trappedRedFlag=false;
 
@@ -138,7 +134,7 @@ public class Main extends Application {
                         }
                     }
                 }
-				if(Board.caseBoard[i][j].getContent() instanceof Flag && Board.caseBoard[i][j].getContent().team== Red) {
+				if(Board.caseBoard[i][j].getContent() instanceof Flag && Board.caseBoard[i][j].getContent().team== Team.Red) {
                     redFlag = true;
                     if (i >= 1 && j >= 1 && i <= 8 && j <= 8) {
                         if (Board.caseBoard[i + 1][j].getContent() instanceof Bomb
@@ -195,7 +191,7 @@ public class Main extends Application {
                         }
                     }
                 }
-				if(Board.caseBoard[i][j].getContent() instanceof Miner && Board.caseBoard[i][j].getContent().team== Red)
+				if(Board.caseBoard[i][j].getContent() instanceof Miner && Board.caseBoard[i][j].getContent().team== Team.Red)
 					redMiner=true;
 
 				if(Board.caseBoard[i][j].getContent() instanceof Miner && Board.caseBoard[i][j].getContent().team==Team.Blue)
@@ -205,17 +201,25 @@ public class Main extends Application {
 
 		}
 
-		if (blueFlag && !redFlag)
-			new DisplayVictory(Blue);
+		if (blueFlag && !redFlag) {
+			new DisplayVictory(Team.Blue);
+			isGameStarted=false;
+		}
 
-		if (!blueFlag && redFlag)
-			new DisplayVictory(Red);
+		if (!blueFlag && redFlag){
+			new DisplayVictory(Team.Red);
+			isGameStarted=false;
+		}
 
-		if (!redMiner&&trappedBlueFlag)
-			new DisplayVictory(Blue);
+		if (!redMiner&&trappedBlueFlag) {
+			new DisplayVictory(Team.Blue);
+			isGameStarted=false;
+		}
 
-		if (!blueMiner&&trappedRedFlag)
-			new DisplayVictory(Red);
+		if (!blueMiner&&trappedRedFlag) {
+			new DisplayVictory(Team.Red);
+			isGameStarted=false;
+		}
 	}
 }
 
