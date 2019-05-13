@@ -8,8 +8,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import pieces.*;
 
 import java.io.*;
@@ -18,7 +16,7 @@ import java.util.ArrayList;
 
 public class MyMenuBarre extends MenuBar {
 
-    public MyMenuBarre() {
+    public MyMenuBarre(ControlPanel c) {
         Menu fichier =new Menu("Jeu");
         Menu option = new Menu ("Options");
         Menu aide = new Menu ("Aide");
@@ -37,7 +35,8 @@ public class MyMenuBarre extends MenuBar {
             Board.cleanBoard();
             SelectionPanel.reset();
             Main.nbCoup=0;
-
+            c.setVisible(true);
+            c.getChildren().get(3).setVisible(false);
         });
         load.setOnAction(e -> {
             FileChooser fc = new FileChooser();

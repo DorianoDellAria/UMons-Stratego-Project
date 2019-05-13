@@ -9,15 +9,15 @@ import pieces.*;
 
 import java.io.*;
 
-public class Case extends StackPane implements Serializable {
+public class Case extends StackPane {
 
     private Piece content;
-    public int x;
-    public int y;
+    public final int x;
+    public final int y;
 
 
     public Case (Piece content, int x, int y){
-        Rectangle rectangle = new Rectangle(90,30);
+        Rectangle rectangle = new Rectangle(90,60);
         rectangle.setStroke(Color.BLACK);
         rectangle.setFill(null);
         this.getChildren().add(rectangle);
@@ -109,7 +109,7 @@ public class Case extends StackPane implements Serializable {
         this.content=p;
         if(p!=null) {
             this.getChildren().clear();
-            Rectangle rec = new Rectangle(90,30);
+            Rectangle rec = new Rectangle(90,60);
             if (p.team==Team.Red) {
                 rec.setFill(Color.RED);
             }
@@ -139,26 +139,13 @@ public class Case extends StackPane implements Serializable {
         }
         else{
             this.getChildren().clear();
-            Rectangle rec = new Rectangle(90,30);
+            Rectangle rec = new Rectangle(90,60);
             rec.setFill(null);
             rec.setStroke(Color.BLACK);
             this.getChildren().add(rec);
         }
 
 
-    }
-
-    private void writeObject(ObjectOutputStream out)throws IOException{
-        out.writeObject(this.content);
-        out.writeObject(this.x);
-        out.writeObject(this.y);
-    }
-
-
-    private void readObject(ObjectInputStream in)throws IOException, ClassNotFoundException{
-        this.setContent((Piece)in.readObject());
-        this.x=(int)in.readObject();
-        this.y=(int)in.readObject();
     }
 
 
