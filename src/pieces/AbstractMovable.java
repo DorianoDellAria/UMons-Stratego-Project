@@ -2,13 +2,27 @@ package pieces;
 
 import board.*;
 
+/**
+ * classe abstraite intermédiaire parent de toutes pièces bougeable
+ */
 public abstract class AbstractMovable extends Piece implements Movable {
 
+	/**
+	 * constructeur
+	 * @param team
+	 */
 	public AbstractMovable(Team team){
 		super(team);
 	}
 
-
+	/**
+	 *
+	 * @param x1 x initial
+	 * @param y1 y initial
+	 * @param x2 x final
+	 * @param y2 y final
+	 * @return le booléen vrai si le déplacement a été éffectué, faux sinon
+	 */
 	@Override
 	public boolean move( int x1, int y1, int x2, int y2){
 		if( Board.caseBoard[x2][y2].getContent()==null || (Board.caseBoard[x1][y1].getContent().team!=Board.caseBoard[x2][y2].getContent().team && Board.caseBoard[x2][y2].getContent().team!=null )) {

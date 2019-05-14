@@ -12,6 +12,9 @@ import pieces.*;
 
 import java.io.*;
 
+import static board.Main.boolDisplay;
+import static board.Main.displayTeam;
+
 public class Case extends StackPane {
 
     private Piece content;
@@ -50,10 +53,8 @@ public class Case extends StackPane {
 								if(isPieceMoved){
 									Main.nbCoup++;
 									Main.checkGameOver();
-									Main.displayVictory(Main.displayTeam,Main.boolDisplay);
+									Main.displayVictory(displayTeam, boolDisplay);
 									Main.player2.makeAMove();
-									Main.checkGameOver();
-									Main.displayVictory(Main.displayTeam,Main.boolDisplay);
 									isPieceMoved=false;
 								}
                             }
@@ -158,12 +159,10 @@ public class Case extends StackPane {
 		Timeline tl = new Timeline(new KeyFrame(Duration.millis(2000),event1-> {
 			isPieceMoved = ((Movable) Board.caseBoard[Board.xBuffer][Board.yBuffer].getContent()).move(Board.xBuffer, Board.yBuffer, this.x, this.y);
 			Main.checkGameOver();
-			Main.displayVictory(Main.displayTeam,Main.boolDisplay);
+			Main.displayVictory(displayTeam, boolDisplay);
 			if(isPieceMoved){
 				Main.nbCoup++;
 				Main.player2.makeAMove();
-				Main.checkGameOver();
-				Main.displayVictory(Main.displayTeam,Main.boolDisplay);
 				isPieceMoved=false;
 				isOnAnimation=false;
 			}

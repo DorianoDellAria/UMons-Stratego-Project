@@ -2,8 +2,8 @@ package pieces;
 
 
 /**
- * @author D.Dell'Aria
+ * interface qui contient la signature de la méthode move qui permet à une pièce de se déplacer sur le plateau
  */
 public interface Movable {
-	public boolean move(int x1, int y1,int x2, int y2);
+	boolean move(int x1, int y1,int x2, int y2);
 }
