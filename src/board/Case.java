@@ -12,6 +12,9 @@ import pieces.*;
 
 import java.io.*;
 
+import static board.Main.boolDisplay;
+import static board.Main.displayTeam;
+
 public class Case extends StackPane {
 
     private Piece content;
@@ -23,7 +26,7 @@ public class Case extends StackPane {
 
 
     public Case (Piece content, int x, int y){
-        Rectangle rectangle = new Rectangle(90,60);
+        Rectangle rectangle = new Rectangle(90,30);
         rectangle.setStroke(Color.BLACK);
         rectangle.setFill(null);
         this.getChildren().add(rectangle);
@@ -32,6 +35,8 @@ public class Case extends StackPane {
         this.y=y;
         this.setOnMouseClicked(event->{
             if(Main.isGameStarted && Main.nbCoup%2==0 ) {
+                Main.checkGameOver();
+                Main.displayVictory(displayTeam,boolDisplay);
                 if (!Board.isClicked && this.content != null && this.content instanceof Movable && this.content.team==Main.playerTeam && !isOnAnimation) {
                     Board.xBuffer = this.x;
                     Board.yBuffer = this.y;
@@ -46,7 +51,6 @@ public class Case extends StackPane {
                                 Board.isClicked = false;
 								if(isPieceMoved){
 									Main.nbCoup++;
-									Main.checkGameOver();
 									Main.player2.makeAMove();
 									isPieceMoved=false;
 								}
@@ -127,7 +131,7 @@ public class Case extends StackPane {
 		try {
 			FileInputStream fis = new FileInputStream(this.content.getIMGPath());
 			try{
-				Rectangle rec = new Rectangle(90,60);
+				Rectangle rec = new Rectangle(90,30);
 				if (this.content!=null && this.content.team==Team.Red) {
 					rec.setFill(Color.RED);
 				}
@@ -167,7 +171,7 @@ public class Case extends StackPane {
         this.content=p;
         if(p!=null) {
             this.getChildren().clear();
-            Rectangle rec = new Rectangle(90,60);     //90,60
+            Rectangle rec = new Rectangle(90,30);     //90,60
             if (p.team==Team.Red) {
                 rec.setFill(Color.RED);
             }
