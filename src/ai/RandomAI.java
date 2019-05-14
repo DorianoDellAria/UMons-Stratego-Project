@@ -124,7 +124,7 @@ public class RandomAI extends AbstractAI implements Serializable {
 			if(!(Board.caseBoard[x][y].getContent() instanceof Movable)){
 				continue;
 			}
-			ArrayList<Coordinates> authorisedMove = this.isFree(x,y);
+			ArrayList<Coordinates> authorisedMove = this.getAuthorisedMove(x,y);
 			if ( authorisedMove.size()!=0) {
 				Coordinates destination = authorisedMove.get(rnd.nextInt(authorisedMove.size()));
 				if(Board.caseBoard[destination.x][destination.y].getContent() != null && Board.caseBoard[destination.x][destination.y].getContent().team == Main.playerTeam){
@@ -144,7 +144,7 @@ public class RandomAI extends AbstractAI implements Serializable {
 		Main.nbCoup++;
 	}
 
-	private ArrayList<Coordinates> isFree(int x, int y){
+	private ArrayList<Coordinates> getAuthorisedMove(int x, int y){
 		ArrayList<Coordinates> authorisedMove = new ArrayList<>(4);
 		if(x>0 && ((Board.caseBoard[x-1][y].getContent()==null) || (Board.caseBoard[x-1][y].getContent().team!=null && !(Board.caseBoard[x-1][y].getContent().team.equals(this.team))))){
 			authorisedMove.add(new Coordinates(x-1,y));
