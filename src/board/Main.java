@@ -22,8 +22,8 @@ public class Main extends Application {
     public static boolean isGameStarted = false;
     public static Team playerTeam;
     public static AI player2;
-    public static boolean display=false;
-    public Team displayTeam;
+    public static boolean boolDisplay=false;
+    public static Team displayTeam;
 
 
 
@@ -343,34 +343,40 @@ public class Main extends Application {
         }
         if (blueFlag && !redFlag){
             isGameStarted=false;
-            display=true;}
+            boolDisplay=true;
+            displayTeam=Team.Blue;}
 
         if (!blueFlag && redFlag){
             isGameStarted=false;
-            display=true;}
+            boolDisplay=true;
+            displayTeam=Team.Red;}
 
         if (!redMiner && trappedBlueFlag){
             isGameStarted=false;
-            display=true;}
+            boolDisplay=true;
+            displayTeam=Team.Blue;}
 
         if (!blueMiner && trappedRedFlag){
             isGameStarted=false;
-            display=true;}
+            boolDisplay=true;
+            displayTeam=Team.Red;}
 
         if(!unblockedBluePiece){
             isGameStarted=false;
-            display=true;}
+            boolDisplay=true;
+            displayTeam=Team.Red;}
 
         if(!unblockedRedPiece){
             isGameStarted=false;
-            display=true;
+            boolDisplay=true;
+            displayTeam=Team.Blue;
         }
 
     }
 
-    public static void DisplayVictory(Team displayTeam, Boolean display) {
+    public static void DisplayVictory(Team displayTeam, Boolean booDisplay) {
 
-        if (display) {
+        if (booDisplay) {
             StackPane secondaryLayout = new StackPane();
             if (displayTeam == Team.Red) {
                 Label text = new Label("partie terminée, victoire de l'équipe rouge");

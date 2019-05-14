@@ -2,8 +2,8 @@ import board.Board;
 import board.Main;
 import pieces.*;
 import junit.framework.TestCase;
-import static board.Main.checkGameOver;
-import static board.Main.isGameStarted;
+
+import static board.Main.*;
 
 
 public class Test extends TestCase{
@@ -145,6 +145,7 @@ public class Test extends TestCase{
         t2.caseBoard[7][8].setContent(spyR);
         Main.isGameStarted=true;
         checkGameOver();
+        assertSame(displayTeam, Team.Blue);
         assertFalse(isGameStarted);
         t2.cleanBoard();
 
@@ -159,21 +160,23 @@ public class Test extends TestCase{
         t2.caseBoard[7][8].setContent(spyB);
         Main.isGameStarted=true;
         checkGameOver();
-        assertFalse(isGameStarted);
-        t2.cleanBoard();
-
-        //test pas de piece de Team Red qui peuvent bouger
-        t2.caseBoard[1][0].setContent(flagB);
-        t2.caseBoard[0][1].setContent(obstacle);
-        t2.caseBoard[0][0].setContent(spyB);
-        t2.caseBoard[8][8].setContent(flagR);
-        t2.caseBoard[7][8].setContent(spyR);
-        Main.isGameStarted=true;
-        checkGameOver();
+        assertSame(displayTeam, Team.Red);
         assertFalse(isGameStarted);
         t2.cleanBoard();
 
         //test pas de piece de Team Blue qui peuvent bouger
+        t2.caseBoard[1][0].setContent(flagB);
+        t2.caseBoard[0][1].setContent(obstacle);
+        t2.caseBoard[0][0].setContent(spyB);
+        t2.caseBoard[8][8].setContent(flagR);
+        t2.caseBoard[7][8].setContent(minerR);
+        Main.isGameStarted=true;
+        checkGameOver();
+        assertSame(displayTeam, Team.Red);
+        assertFalse(isGameStarted);
+        t2.cleanBoard();
+
+        //test pas de piece de Team Red qui peuvent bouger
         t2.caseBoard[1][0].setContent(flagR);
         t2.caseBoard[0][1].setContent(obstacle);
         t2.caseBoard[0][0].setContent(spyR);
@@ -181,6 +184,7 @@ public class Test extends TestCase{
         t2.caseBoard[7][8].setContent(spyB);
         Main.isGameStarted=true;
         checkGameOver();
+        assertSame(displayTeam, Team.Blue);
         assertFalse(isGameStarted);
         t2.cleanBoard();
 
@@ -191,6 +195,7 @@ public class Test extends TestCase{
         t2.caseBoard[7][8].setContent(spyR);
         Main.isGameStarted=true;
         checkGameOver();
+        assertSame(displayTeam, Team.Blue);
         assertFalse(isGameStarted);
         t2.cleanBoard();
 
@@ -201,6 +206,7 @@ public class Test extends TestCase{
         t2.caseBoard[7][8].setContent(spyB);
         Main.isGameStarted=true;
         checkGameOver();
+        assertSame(displayTeam, Team.Red);
         assertFalse(isGameStarted);
         t2.cleanBoard();
 

@@ -12,6 +12,8 @@ import pieces.*;
 
 import java.io.*;
 
+import static board.Main.*;
+
 public class Case extends StackPane {
 
     private Piece content;
@@ -67,6 +69,7 @@ public class Case extends StackPane {
 									if(isPieceMoved){
 										Main.nbCoup++;
 										Main.checkGameOver();
+										Main.DisplayVictory(displayTeam,boolDisplay);
 										Main.player2.makeAMove();
 										isPieceMoved=false;
 									}
