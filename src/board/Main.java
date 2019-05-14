@@ -3,8 +3,10 @@ package board;
 import ai.AI;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import pieces.*;
@@ -20,6 +22,8 @@ public class Main extends Application {
     public static boolean isGameStarted = false;
     public static Team playerTeam;
     public static AI player2;
+    public static boolean display=false;
+    public Team displayTeam;
 
 
 
@@ -34,8 +38,6 @@ public class Main extends Application {
         primaryStage.setTitle("Stratego");
 
         Board board = new Board();
-
-
 
         SelectionPanel select = new SelectionPanel();
 
@@ -340,29 +342,51 @@ public class Main extends Application {
             }
         }
         if (blueFlag && !redFlag){
-            //new DisplayVictory(Team.Blue);
-            isGameStarted=false;}
+            isGameStarted=false;
+            display=true;}
 
         if (!blueFlag && redFlag){
-            //new DisplayVictory(Team.Red);
-            isGameStarted=false;}
+            isGameStarted=false;
+            display=true;}
 
         if (!redMiner && trappedBlueFlag){
-            //new DisplayVictory(Team.Blue);
-            isGameStarted=false;}
+            isGameStarted=false;
+            display=true;}
 
         if (!blueMiner && trappedRedFlag){
-            //new DisplayVictory(Team.Red);
-            isGameStarted=false;}
+            isGameStarted=false;
+            display=true;}
 
         if(!unblockedBluePiece){
-            //new DisplayVictory(Team.Red);
-            isGameStarted=false;}
+            isGameStarted=false;
+            display=true;}
 
         if(!unblockedRedPiece){
-            //new DisplayVictory(Team.Blue);
-            isGameStarted=false;}
+            isGameStarted=false;
+            display=true;
+        }
 
+    }
+
+    public static void DisplayVictory(Team displayTeam, Boolean display) {
+
+        if (display) {
+            StackPane secondaryLayout = new StackPane();
+            if (displayTeam == Team.Red) {
+                Label text = new Label("partie terminée, victoire de l'équipe rouge");
+                secondaryLayout.getChildren().add(text);
+            } else {
+                Label text = new Label("partie terminée, victoire de l'équipe bleue");
+                secondaryLayout.getChildren().add(text);
+            }
+
+            Scene secondScene = new Scene(secondaryLayout, 300, 100);
+
+            Stage secondaryWindow = new Stage();
+            secondaryWindow.setTitle("");
+            secondaryWindow.setScene(secondScene);
+            secondaryWindow.show();
+        }
     }
 }
 

@@ -1,6 +1,9 @@
 import board.Board;
+import board.Main;
 import pieces.*;
 import junit.framework.TestCase;
+import static board.Main.checkGameOver;
+import static board.Main.isGameStarted;
 
 
 public class Test extends TestCase{
@@ -78,13 +81,135 @@ public class Test extends TestCase{
     }
 
     @org.junit.Test
-    public static void checkGameOver(){
+    public static void testCheckGameOver(){
+
+        Board t2=new Board();
+        final Bomb bombB=new Bomb(Team.Blue);
+        final Bomb bombR=new Bomb(Team.Red);
+        final Flag flagB=new Flag(Team.Blue);
+        final Spy spyR =new Spy(Team.Red);
+        final Spy spyB =new Spy(Team.Blue);
+        final Flag flagR=new Flag(Team.Red);
+        final Miner minerR=new Miner(Team.Red);
+        final Miner minerB=new Miner(Team.Blue);
+        final Obstacle obstacle=new Obstacle();
+
+
+        //test cas de base
+
+        t2.caseBoard[0][0].setContent(flagB);
+        t2.caseBoard[2][2].setContent(spyB);
+        t2.caseBoard[8][8].setContent(flagR);
+        t2.caseBoard[7][8].setContent(spyR);
+        Main.isGameStarted=true;
+        checkGameOver();
+        assertTrue(isGameStarted);
+        t2.cleanBoard();
+
+        //test flag de Team Blue entouré par des bombes et/ou obstacles et miner de Team Red en jeu
+
+        t2.caseBoard[1][0].setContent(bombB);
+        t2.caseBoard[0][0].setContent(flagB);
+        t2.caseBoard[0][1].setContent(obstacle);
+        t2.caseBoard[2][2].setContent(spyB);
+        t2.caseBoard[8][8].setContent(flagR);
+        t2.caseBoard[7][7].setContent(minerR);
+        Main.isGameStarted=true;
+        checkGameOver();
+        assertTrue(isGameStarted);
+        t2.cleanBoard();
+
+
+        //test flag de Team Red entouré par des bombes et/ou obstacles et miner de Team Blue en jeu
+
+        t2.caseBoard[1][0].setContent(bombR);
+        t2.caseBoard[0][0].setContent(flagR);
+        t2.caseBoard[0][1].setContent(obstacle);
+        t2.caseBoard[2][2].setContent(spyR);
+        t2.caseBoard[8][8].setContent(flagB);
+        t2.caseBoard[7][7].setContent(minerB);
+        Main.isGameStarted=true;
+        checkGameOver();
+        assertTrue(isGameStarted);
+        t2.cleanBoard();
+
+
+        //test flag de Team Blue bloqué et pas de miner de Team Red en jeu
+
+
+        t2.caseBoard[1][0].setContent(bombB);
+        t2.caseBoard[0][0].setContent(flagB);
+        t2.caseBoard[0][1].setContent(obstacle);
+        t2.caseBoard[2][2].setContent(spyB);
+        t2.caseBoard[8][8].setContent(flagR);
+        t2.caseBoard[7][8].setContent(spyR);
+        Main.isGameStarted=true;
+        checkGameOver();
+        assertFalse(isGameStarted);
+        t2.cleanBoard();
+
+        //test flag de Team Red bloqué et pas de miner de Team Blue en jeu
+
+
+        t2.caseBoard[1][0].setContent(bombR);
+        t2.caseBoard[0][0].setContent(flagR);
+        t2.caseBoard[0][1].setContent(obstacle);
+        t2.caseBoard[2][2].setContent(spyR);
+        t2.caseBoard[8][8].setContent(flagB);
+        t2.caseBoard[7][8].setContent(spyB);
+        Main.isGameStarted=true;
+        checkGameOver();
+        assertFalse(isGameStarted);
+        t2.cleanBoard();
+
+        //test pas de piece de Team Red qui peuvent bouger
+        t2.caseBoard[1][0].setContent(flagB);
+        t2.caseBoard[0][1].setContent(obstacle);
+        t2.caseBoard[0][0].setContent(spyB);
+        t2.caseBoard[8][8].setContent(flagR);
+        t2.caseBoard[7][8].setContent(spyR);
+        Main.isGameStarted=true;
+        checkGameOver();
+        assertFalse(isGameStarted);
+        t2.cleanBoard();
+
+        //test pas de piece de Team Blue qui peuvent bouger
+        t2.caseBoard[1][0].setContent(flagR);
+        t2.caseBoard[0][1].setContent(obstacle);
+        t2.caseBoard[0][0].setContent(spyR);
+        t2.caseBoard[8][8].setContent(flagB);
+        t2.caseBoard[7][8].setContent(spyB);
+        Main.isGameStarted=true;
+        checkGameOver();
+        assertFalse(isGameStarted);
+        t2.cleanBoard();
+
+        //test pas de flag de Team Red
+
+        t2.caseBoard[2][2].setContent(flagB);
+        t2.caseBoard[0][0].setContent(spyB);
+        t2.caseBoard[7][8].setContent(spyR);
+        Main.isGameStarted=true;
+        checkGameOver();
+        assertFalse(isGameStarted);
+        t2.cleanBoard();
+
+        //test pas de flag de Team Blue
+
+        t2.caseBoard[2][2].setContent(flagR);
+        t2.caseBoard[0][0].setContent(spyR);
+        t2.caseBoard[7][8].setContent(spyB);
+        Main.isGameStarted=true;
+        checkGameOver();
+        assertFalse(isGameStarted);
+        t2.cleanBoard();
 
     }
 
     public static void main(String[] arg){
         testfight();
         testMove();
+        testCheckGameOver();
     }
 }
 
