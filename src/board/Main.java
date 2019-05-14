@@ -374,9 +374,9 @@ public class Main extends Application {
 
     }
 
-    public static void DisplayVictory(Team displayTeam, Boolean booDisplay) {
+    public static void displayVictory(Team displayTeam, Boolean boolDisplay) {
 
-        if (booDisplay) {
+        if (boolDisplay) {
             StackPane secondaryLayout = new StackPane();
             if (displayTeam == Team.Red) {
                 Label text = new Label("partie terminée, victoire de l'équipe rouge");
