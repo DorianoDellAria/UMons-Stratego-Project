@@ -12,7 +12,6 @@ import pieces.*;
 
 import java.io.*;
 
-
 public class Case extends StackPane {
 
     private Piece content;
@@ -33,6 +32,9 @@ public class Case extends StackPane {
         this.y=y;
         this.setOnMouseClicked(event->{
             if(Main.isGameStarted && Main.nbCoup%2==0 ) {
+                boolDisplay=false;
+                Main.checkGameOver();
+                Main.displayVictory(displayTeam,boolDisplay);
                 if (!Board.isClicked && this.content != null && this.content instanceof Movable && this.content.team==Main.playerTeam && !isOnAnimation) {
                     Board.xBuffer = this.x;
                     Board.yBuffer = this.y;
