@@ -1,11 +1,8 @@
 package pieces;
 
 
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
 
-public abstract class Piece implements Serializable {
+public abstract class Piece  {
 	public final Team team;
 
 	public Piece(Team team){
@@ -26,13 +23,5 @@ public abstract class Piece implements Serializable {
 
 	public abstract int getVALUE();
 	public abstract String getIMGPath();
-
-	private void writeObject(ObjectOutputStream out) throws IOException {
-		out.writeObject(team);
-	}
-
-
-
-
 
 }

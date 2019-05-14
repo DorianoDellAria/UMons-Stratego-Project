@@ -13,13 +13,12 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-public class SmarterAI implements AI, Serializable {
+public class SmarterAI extends AbstractAI implements Serializable {
 
 	private Team team;
 	private ArrayList<Coordinates> piecesPosition = new ArrayList<>(40);
 	private Random rnd = new Random();
 	private boolean isPieceMoved =true;
-	private int[][] memory = new int[10][10];
 
 	public SmarterAI(Team team){
 		this.team = team;
@@ -44,7 +43,7 @@ public class SmarterAI implements AI, Serializable {
 			}
 			destination = isPieceNear(x,y);
 			if(destination != null){
-				((Movable)Board.caseBoard[x][y].getContent()).move(x,y,destination.x,destination.y);
+				this.fightAnimation(x,y,destination.x,destination.y);
 				piecesPosition.set(tmp , new Coordinates(destination.x,destination.y));
 				isPieceMoved =false;
 			}

@@ -12,7 +12,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class RandomAI implements AI, Serializable {
+public class RandomAI extends AbstractAI implements Serializable {
 
 	private Random rnd = new Random();
 	private Team team;
@@ -107,7 +107,6 @@ public class RandomAI implements AI, Serializable {
 				piecesPosition.add(new Coordinates(i,j));
 			}
 		}
-		debug(piecesPosition);
 
 
 	}
@@ -116,36 +115,28 @@ public class RandomAI implements AI, Serializable {
 	public void makeAMove(){
 		do {
 			int tmp = rnd.nextInt(piecesPosition.size());
-			System.out.println(piecesPosition.get(tmp));
 			int x = piecesPosition.get(tmp).x;
 			int y = piecesPosition.get(tmp).y;
 			if (Board.caseBoard[x][y].getContent()==null || Board.caseBoard[x][y].getContent().team!=this.team) {
 				piecesPosition.remove(tmp);
 				continue;
 			}
+			if(!(Board.caseBoard[x][y].getContent() instanceof Movable)){
+				continue;
+			}
+			ArrayList<Coordinates> authorisedMove = this.isFree(x,y);
+			if ( authorisedMove.size()!=0) {
+				Coordinates destination = authorisedMove.get(rnd.nextInt(authorisedMove.size()));
+				if(Board.caseBoard[destination.x][destination.y].getContent() != null && Board.caseBoard[destination.x][destination.y].getContent().team == Main.playerTeam){
+					this.fightAnimation(x,y,destination.x,destination.y);
+					isPieceMoved = false;
+					piecesPosition.set(tmp, destination);
+				}else {
+					((Movable) (Board.caseBoard[x][y].getContent())).move(x, y, destination.x, destination.y);
+					isPieceMoved = false;
+					piecesPosition.set(tmp, destination);
+				}
 
-			if (Board.caseBoard[x][y].getContent() instanceof Movable && this.isFree(x, y)) {
-				boolean[] authorisedMove = this.getAuthorisedMove(x, y);
-				if (authorisedMove[0]) {
-					((Movable) (Board.caseBoard[x][y].getContent())).move(x, y, x - 1, y);
-					isPieceMoved =false;
-					piecesPosition.get(tmp).x=x-1;
-				}
-				else if (authorisedMove[1]) {
-					((Movable) (Board.caseBoard[x][y].getContent())).move(x, y, x + 1, y);
-					isPieceMoved =false;
-					piecesPosition.get(tmp).x=x+1;
-				}
-				else if (authorisedMove[2]) {
-					((Movable) (Board.caseBoard[x][y].getContent())).move(x, y, x, y - 1);
-					isPieceMoved =false;
-					piecesPosition.get(tmp).y=y-1;
-				}
-				else if (authorisedMove[3]) {
-					((Movable) (Board.caseBoard[x][y].getContent())).move(x, y, x, y + 1);
-					isPieceMoved =false;
-					piecesPosition.get(tmp).y=y+1;
-				}
 
 			}
 		}while(isPieceMoved);
@@ -153,38 +144,23 @@ public class RandomAI implements AI, Serializable {
 		Main.nbCoup++;
 	}
 
-	private boolean isFree(int x, int y){
+	private ArrayList<Coordinates> isFree(int x, int y){
+		ArrayList<Coordinates> authorisedMove = new ArrayList<>(4);
 		if(x>0 && ((Board.caseBoard[x-1][y].getContent()==null) || (Board.caseBoard[x-1][y].getContent().team!=null && !(Board.caseBoard[x-1][y].getContent().team.equals(this.team))))){
-			return true;
+			authorisedMove.add(new Coordinates(x-1,y));
 		}
 		if(x<9 && ((Board.caseBoard[x+1][y].getContent()==null) || (Board.caseBoard[x+1][y].getContent().team!=null && !(Board.caseBoard[x+1][y].getContent().team.equals(this.team))))){
-			return true;
+			authorisedMove.add(new Coordinates(x+1,y));
 		}
 		if(y>0 && ((Board.caseBoard[x][y-1].getContent()==null) || (Board.caseBoard[x][y-1].getContent().team!=null && !(Board.caseBoard[x][y-1].getContent().team.equals(this.team))))){
-			return true;
+			authorisedMove.add(new Coordinates(x,y-1));
 		}
 		if(y<9 && ((Board.caseBoard[x][y+1].getContent()==null) || (Board.caseBoard[x][y+1].getContent().team!=null && !(Board.caseBoard[x][y+1].getContent().team.equals(this.team))))){
-			return true;
-		}
-		return false;
-	}
-
-	private boolean[] getAuthorisedMove(int x, int y){
-		boolean [] authorisedMove = {false,false,false,false};
-		if(x>0 && ((Board.caseBoard[x-1][y].getContent()==null) || (Board.caseBoard[x-1][y].getContent().team!=null && !(Board.caseBoard[x-1][y].getContent().team.equals(this.team))))){
-			authorisedMove[0]=true;
-		}
-		if(x<9 && ((Board.caseBoard[x+1][y].getContent()==null) || (Board.caseBoard[x+1][y].getContent().team!=null && !(Board.caseBoard[x+1][y].getContent().team.equals(this.team))))){
-			authorisedMove[1]=true;
-		}
-		if(y>0 && ((Board.caseBoard[x][y-1].getContent()==null) || (Board.caseBoard[x][y-1].getContent().team!=null && !(Board.caseBoard[x][y-1].getContent().team.equals(this.team))))){
-			authorisedMove[2]=true;
-		}
-		if(y<9 && ((Board.caseBoard[x][y+1].getContent()==null) || (Board.caseBoard[x][y+1].getContent().team!=null && !(Board.caseBoard[x][y+1].getContent().team.equals(this.team))))){
-			authorisedMove[3]=true;
+			authorisedMove.add(new Coordinates(x,y+1));
 		}
 		return authorisedMove;
 	}
+
 
 	public static void debug(ArrayList<Coordinates> P){
 		for(Coordinates i : P)
