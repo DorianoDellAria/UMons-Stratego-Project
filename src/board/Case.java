@@ -62,8 +62,14 @@ public class Case extends StackPane {
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
-                                Timeline tl = new Timeline(new KeyFrame(Duration.millis(2000),event1->{
-                                    isPieceMoved = ((Movable) Board.caseBoard[Board.xBuffer][Board.yBuffer].getContent()).move(Board.xBuffer, Board.yBuffer, this.x, this.y);
+                                Timeline tl = new Timeline(new KeyFrame(Duration.millis(2000),event1-> {
+                                	isPieceMoved = ((Movable) Board.caseBoard[Board.xBuffer][Board.yBuffer].getContent()).move(Board.xBuffer, Board.yBuffer, this.x, this.y);
+									if(isPieceMoved){
+										Main.nbCoup++;
+										Main.checkGameOver();
+										Main.player2.makeAMove();
+										isPieceMoved=false;
+									}
                                 }));
                                 tl.setCycleCount(1);
                                 tl.play();
@@ -72,14 +78,15 @@ public class Case extends StackPane {
                             else{
                                 isPieceMoved = ((Movable) Board.caseBoard[Board.xBuffer][Board.yBuffer].getContent()).move(Board.xBuffer, Board.yBuffer, this.x, this.y);
                                 Board.isClicked = false;
+								if(isPieceMoved){
+									Main.nbCoup++;
+									Main.checkGameOver();
+									Main.player2.makeAMove();
+									isPieceMoved=false;
+								}
                             }
                 }
-                if(isPieceMoved){
-                    Main.nbCoup++;
-                    Main.checkGameOver();
-                    Main.player2.makeAMove();
-                    isPieceMoved=false;
-                }
+
             }
             else{
                 if(this.content ==null && this.y >=6 && SelectionPanel.isClicked) {
@@ -201,7 +208,39 @@ public class Case extends StackPane {
 
     private static boolean isShowable(int x1, int y1, int x2, int y2){
         if(Board.caseBoard[x1][y1].getContent() instanceof Scout){
-            return ((Scout) Board.caseBoard[x1][y1].getContent()).checkObstacle(x1,y1,x2,y2);
+            if(x1==x2){
+            	if(y1>y2){
+            		for(int i = y1-1;i>y2;i--){
+						if(Board.caseBoard[x1][i].getContent()!=null){
+							return false;
+						}
+					}
+				}else{
+					for(int i = y1+1;i<y2;i++){
+						if(Board.caseBoard[x1][i].getContent()!=null){
+							return false;
+						}
+					}
+				}
+            	return true;
+			}
+            else if(y1==y2){
+				if(x1>x2){
+					for(int i = x1-1;i>x2;i--){
+						if(Board.caseBoard[i][y1].getContent()!=null){
+							return false;
+						}
+					}
+				}else{
+					for(int i = x1+1;i<x2;i++){
+						if(Board.caseBoard[i][y1].getContent()!=null){
+							return false;
+						}
+					}
+				}
+				return true;
+			}
+            return false; //inutile
         }
         else{
             if((x1==x2 && Math.abs(y1-y2)==1) || (y1==y2 && Math.abs(x1-x2)==1)){
