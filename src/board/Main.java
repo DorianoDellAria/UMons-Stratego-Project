@@ -223,16 +223,16 @@ public class Main extends Application {
                 if (Board.caseBoard[i][j].getContent() instanceof Movable && Board.caseBoard[i][j].getContent().team == Team.Blue){
 
                     if (i >= 1 && j >= 1 && i <= 8 && j <= 8) {
-                        if (!(Board.caseBoard[i][j+1].getContent() !=null&&(Board.caseBoard[i + 1][j].getContent() instanceof Obstacle||Board.caseBoard[i + 1][j].getContent().team== Team.Blue)
-                                && Board.caseBoard[i][j+1].getContent() !=null&&( Board.caseBoard[i - 1][j].getContent() instanceof Obstacle||Board.caseBoard[i - 1][j].getContent().team== Team.Blue)
+                        if (!(Board.caseBoard[i+1][j].getContent() !=null&&(Board.caseBoard[i + 1][j].getContent() instanceof Obstacle||Board.caseBoard[i + 1][j].getContent().team== Team.Blue)
+                                && Board.caseBoard[i-1][j].getContent() !=null&&( Board.caseBoard[i - 1][j].getContent() instanceof Obstacle||Board.caseBoard[i - 1][j].getContent().team== Team.Blue)
                                 && Board.caseBoard[i][j+1].getContent() !=null&&(Board.caseBoard[i][j+1].getContent() instanceof Obstacle||Board.caseBoard[i][j+1].getContent().team== Team.Blue)
-                                && Board.caseBoard[i][j+1].getContent() !=null&&(Board.caseBoard[i][j-1].getContent() instanceof Obstacle||Board.caseBoard[i][j-1].getContent().team==Team.Blue))) {
+                                && Board.caseBoard[i][j-1].getContent() !=null&&(Board.caseBoard[i][j-1].getContent() instanceof Obstacle||Board.caseBoard[i][j-1].getContent().team==Team.Blue))) {
                             unblockedBluePiece = true;
                         }
                     }
 
                     if (i == 0 && j == 0) {
-                        if (!(Board.caseBoard[i][j+1].getContent() !=null&&(Board.caseBoard[i + 1][j].getContent() instanceof Obstacle||Board.caseBoard[i + 1][j].getContent().team==Team.Blue)
+                        if (!(Board.caseBoard[i+1][j].getContent() !=null&&(Board.caseBoard[i + 1][j].getContent() instanceof Obstacle||Board.caseBoard[i + 1][j].getContent().team==Team.Blue)
                                 &&Board.caseBoard[i][j+1].getContent() !=null&&( Board.caseBoard[i][j+1].getContent() instanceof Obstacle||Board.caseBoard[i][j+1].getContent().team==Team.Blue))) {
                             unblockedBluePiece = true;
                         }
@@ -246,7 +246,7 @@ public class Main extends Application {
                     }
 
                     if (i == 0 && j >= 1 && j <= 8) {
-                        if (!(Board.caseBoard[i - 1][j].getContent() !=null&&(Board.caseBoard[i + 1][j].getContent() instanceof Obstacle||Board.caseBoard[i + 1][j].getContent().team==Team.Blue)
+                        if (!(Board.caseBoard[i +1][j].getContent() !=null&&(Board.caseBoard[i + 1][j].getContent() instanceof Obstacle||Board.caseBoard[i + 1][j].getContent().team==Team.Blue)
                                 && Board.caseBoard[i][j+1].getContent() !=null&&(Board.caseBoard[i][j+1].getContent() instanceof Obstacle||Board.caseBoard[i][j+1].getContent().team==Team.Blue)
                                 && Board.caseBoard[i][j-1].getContent() !=null&&(Board.caseBoard[i][j-1].getContent() instanceof Obstacle||Board.caseBoard[i][j-1].getContent().team==Team.Blue))) {
                             unblockedBluePiece = true;
