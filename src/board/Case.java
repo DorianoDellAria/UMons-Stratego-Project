@@ -17,11 +17,13 @@ public class Case extends StackPane {
     private Piece content;
     public final int x;
     public final int y;
-    private boolean isPieceMoved =false;
+    private static boolean isPieceMoved =false;
+    public static boolean isOnAnimation = false;
+
 
 
     public Case (Piece content, int x, int y){
-        Rectangle rectangle = new Rectangle(90,30);
+        Rectangle rectangle = new Rectangle(90,60);
         rectangle.setStroke(Color.BLACK);
         rectangle.setFill(null);
         this.getChildren().add(rectangle);
@@ -29,50 +31,14 @@ public class Case extends StackPane {
         this.x=x;
         this.y=y;
         this.setOnMouseClicked(event->{
-            if(Main.isGameStarted && Main.nbCoup%2==0) {
-                if (!Board.isClicked && this.content != null && this.content instanceof Movable && this.content.team==Main.playerTeam) {
+            if(Main.isGameStarted && Main.nbCoup%2==0 ) {
+                if (!Board.isClicked && this.content != null && this.content instanceof Movable && this.content.team==Main.playerTeam && !isOnAnimation) {
                     Board.xBuffer = this.x;
                     Board.yBuffer = this.y;
                     Board.isClicked = true;
                 } else if (Board.isClicked && (Board.xBuffer != this.x || Board.yBuffer != this.y)) {
                             if(this.content!=null && this.content.team!=Main.playerTeam && isShowable(Board.xBuffer,Board.yBuffer,this.x,this.y)){
-                                this.getChildren().clear();
-                                try {
-                                    FileInputStream fis = new FileInputStream(this.content.getIMGPath());
-                                    try{
-                                        Rectangle rec = new Rectangle(90,30);
-                                        if (this.content!=null && this.content.team==Team.Red) {
-                                            rec.setFill(Color.RED);
-                                        }
-                                        else if(this.content!=null && this.content.team==Team.Blue){
-                                            rec.setFill(Color.LIGHTBLUE);
-                                        }
-                                        else{
-                                            rec.setFill(null);
-                                        }
-                                        rec.setStroke(Color.BLACK);
-                                        Image img =new Image(fis);
-                                        ImageView iv = new ImageView(img);
-                                        iv.setFitHeight(45);
-                                        iv.setPreserveRatio(true);
-                                        Board.caseBoard[x][y].getChildren().addAll(rec,iv);
-                                    }finally {
-                                        fis.close();
-                                    }
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                                Timeline tl = new Timeline(new KeyFrame(Duration.millis(2000),event1-> {
-                                	isPieceMoved = ((Movable) Board.caseBoard[Board.xBuffer][Board.yBuffer].getContent()).move(Board.xBuffer, Board.yBuffer, this.x, this.y);
-									if(isPieceMoved){
-										Main.nbCoup++;
-										Main.checkGameOver();
-										Main.player2.makeAMove();
-										isPieceMoved=false;
-									}
-                                }));
-                                tl.setCycleCount(1);
-                                tl.play();
+                                this.fightAnimation();
                                 Board.isClicked = false;
                             }
                             else{
@@ -155,13 +121,53 @@ public class Case extends StackPane {
         return this.content;
     }
 
-
+	private void fightAnimation(){
+    	isOnAnimation =true;
+		this.getChildren().clear();
+		try {
+			FileInputStream fis = new FileInputStream(this.content.getIMGPath());
+			try{
+				Rectangle rec = new Rectangle(90,60);
+				if (this.content!=null && this.content.team==Team.Red) {
+					rec.setFill(Color.RED);
+				}
+				else if(this.content!=null && this.content.team==Team.Blue){
+					rec.setFill(Color.LIGHTBLUE);
+				}
+				else{
+					rec.setFill(null);
+				}
+				rec.setStroke(Color.BLACK);
+				Image img =new Image(fis);
+				ImageView iv = new ImageView(img);
+				iv.setFitHeight(45);
+				iv.setPreserveRatio(true);
+				this.getChildren().addAll(rec,iv);
+			}finally {
+				fis.close();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Timeline tl = new Timeline(new KeyFrame(Duration.millis(2000),event1-> {
+			isPieceMoved = ((Movable) Board.caseBoard[Board.xBuffer][Board.yBuffer].getContent()).move(Board.xBuffer, Board.yBuffer, this.x, this.y);
+			if(isPieceMoved){
+				Main.nbCoup++;
+				Main.checkGameOver();
+				Main.player2.makeAMove();
+				isPieceMoved=false;
+				isOnAnimation=false;
+			}
+		}));
+		tl.setCycleCount(1);
+		tl.play();
+	}
 
     public void setContent (Piece p){
         this.content=p;
         if(p!=null) {
             this.getChildren().clear();
-            Rectangle rec = new Rectangle(90,30);     //90,60
+            Rectangle rec = new Rectangle(90,60);     //90,60
             if (p.team==Team.Red) {
                 rec.setFill(Color.RED);
             }
@@ -197,7 +203,7 @@ public class Case extends StackPane {
         }
         else{
             this.getChildren().clear();
-            Rectangle rec = new Rectangle(90,30);
+            Rectangle rec = new Rectangle(90,60);
             rec.setFill(null);
             rec.setStroke(Color.BLACK);
             this.getChildren().add(rec);
