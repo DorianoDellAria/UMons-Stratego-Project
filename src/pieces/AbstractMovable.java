@@ -9,6 +9,8 @@ public abstract class AbstractMovable extends Piece implements Movable {
 
 	/**
 	 * @param team l'équipe de la pièce
+	 * @param VALUE la valeur de la pièce
+	 * @param img le chemin d'accès à l'image
 	 */
 	public AbstractMovable(Team team,int VALUE, String img){
 		super(team,VALUE, img);

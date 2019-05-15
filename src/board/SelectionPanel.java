@@ -54,7 +54,7 @@ public class SelectionPanel extends ScrollPane {
 		SelectionButton bomb = new SelectionButton(11, 6);
 
 
-		Button save = new Button("Save configuration");
+		Button save = new Button("Sauvegarder configuration");
 		save.setFocusTraversable(false);
 		container.setMargin(save, new Insets(10));
 		save.setOnAction(e ->{
@@ -87,7 +87,7 @@ public class SelectionPanel extends ScrollPane {
 		});
 
 
-		Button load = new Button("Load configuration");
+		Button load = new Button("Charger configuration");
 		load.setFocusTraversable(false);
 		container.setMargin(load, new Insets(10));
 		load.setOnAction(e ->{
@@ -155,7 +155,6 @@ public class SelectionPanel extends ScrollPane {
 									break;
 
 								default:
-									System.out.println("erreur");
 									break;
 							}
 							count++;
@@ -170,15 +169,17 @@ public class SelectionPanel extends ScrollPane {
 			}
 		});
 
-		Button start = new Button("Start Game !");
+		Button start = new Button("Lancer la partie !");
 		container.setMargin(start, new Insets(10));
 		start.setFocusTraversable(false);
 		start.setOnAction(e -> {
-			Main.isGameStarted=true;
-			container.setVisible(false);
-			if(Main.playerTeam==Team.Blue){
-				Main.nbCoup=1;
-				Main.player2.makeAMove();
+			if(isPlacementFinished()) {
+				Main.isGameStarted = true;
+				container.setVisible(false);
+				if (Main.playerTeam == Team.Blue) {
+					Main.nbCoup = 1;
+					Main.player2.makeAMove();
+				}
 			}
 		});
 
@@ -193,6 +194,21 @@ public class SelectionPanel extends ScrollPane {
 		container.getChildren().clear();
 		setButton();
 
+	}
+
+	/**
+	 * Méthode de vérification de placement de pièce
+	 * @return vrai si toutes les pièces sont placées, faux sinon
+	 */
+	private static boolean isPlacementFinished(){
+		for(int i =0;i<10;i++){
+			for(int j=6;j<10;j++){
+				if (Board.caseBoard[i][j].getContent()==null) {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 
 }

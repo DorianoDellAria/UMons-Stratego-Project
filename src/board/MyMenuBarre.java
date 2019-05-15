@@ -45,6 +45,7 @@ public class MyMenuBarre extends MenuBar {
             c.setVisible(true);
         });
         load.setOnAction(e -> {
+            Board.cleanBoard();
             FileChooser fc = new FileChooser();
             fc.setTitle("Load game");
             fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("data file","*.dat"));
@@ -125,6 +126,7 @@ public class MyMenuBarre extends MenuBar {
             }catch(IOException | ClassNotFoundException i){
                 i.printStackTrace();
             }
+            c.setVisible(false);
         });
 
 
