@@ -38,23 +38,23 @@ public class ControlPanel extends HBox {
 		placement.setFocusTraversable(false);
 		placement.setOnAction(e -> {
 			if(combo.getValue().equals("IA aléatoire")){
-				if(team.getValue().equals("Bleu")) {
+				if(team.getValue().equals("Rouge")) {
 					Main.player2 = new RandomAI(Team.Red);
 					Main.player2.init();
 					Main.playerTeam=Team.Blue;
 
-				} else if(team.getValue().equals("Rouge")) {
+				} else if(team.getValue().equals("Bleu")) {
 					Main.player2 = new RandomAI(Team.Blue);
 					Main.player2.init();
 					Main.playerTeam=Team.Red;
 				}
 
 			}else if(combo.getValue().equals("IA faible")){
-				if(team.getValue().equals("Bleu")) {
+				if(team.getValue().equals("Rouge")) {
 					Main.player2 = new SmarterAI(Team.Red);
 					Main.player2.init();
 					Main.playerTeam=Team.Blue;
-				} else if(team.getValue().equals("Rouge")) {
+				} else if(team.getValue().equals("Bleu")) {
 					Main.player2 = new SmarterAI(Team.Blue);
 					Main.player2.init();
 					Main.playerTeam=Team.Red;
