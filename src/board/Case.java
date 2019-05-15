@@ -15,6 +15,12 @@ import java.io.*;
 import static board.Main.boolDisplay;
 import static board.Main.displayTeam;
 
+/**
+ * La classe Case est la classe qui compose le plateau. Une case est remplie si la variable contient une pièce, elle est vide si content = null.
+ * Chaque case possède une coordonée en x et en y. La variable isPieceMoved est utile pour la dtection de mouvement sur le plateau.
+ * Lavariable isOnAnimation empêche le joueur de déplacer une pièce lorsque le jeu est en nimation de combat.
+ * La classe hérite de StackPane de javafx
+ */
 public class Case extends StackPane {
 
     private Piece content;
@@ -24,7 +30,19 @@ public class Case extends StackPane {
     public static boolean isOnAnimation = false;
 
 
-
+	/**
+	 * Constructeur de la classe Case. Il place un rectangle avec la couleur de l'équipe dans une stackPane ainsi que l'image de la pièce que la case
+	 * contient.
+	 * Chaque case possède un eventHandler défini avec une expression lambda.
+	 * La case n'est cliquable que lorsque le nombre de coup de la partie est paire.
+	 * Lorsque la case est cliqué, 2 possibilité, soit il n'y avait pas d'autre case cliqué avant, dans ce cas on rempli les variables xBuffer et yBuffer
+	 * par les coordonées de la case. Soit il y avait une case déjà cliquée, dans ce cas om applique la méthode move avec les coordonée buffer et les coordonées
+	 * actuelle.
+	 * Si le jeu n'est pas commencé, l'eventHandler se charge de positioné les pièces sur le plateau après avoir sélectioné une pièce dans le selectionPanel
+	 * @param content est la pièce qui est contenue dans la case
+	 * @param x est la coordonée horyzontale sur le plateau
+	 * @param y est la coordonées verticale du plateau
+	 */
     public Case (Piece content, int x, int y){
         Rectangle rectangle = new Rectangle(90,60);
         rectangle.setStroke(Color.BLACK);
@@ -124,10 +142,17 @@ public class Case extends StackPane {
 
     }
 
-    public Piece getContent (){
+	/**
+	 * Méthode donnant accès au contenue d'une case
+	 * @return le contenu de la case
+	 */
+	public Piece getContent (){
         return this.content;
     }
 
+	/**
+	 * méthode d'affiche de la pièce adverse lorsqu'on l'attaque
+	 */
 	private void fightAnimation(){
     	isOnAnimation =true;
 		this.getChildren().clear();
@@ -171,6 +196,10 @@ public class Case extends StackPane {
 		tl.play();
 	}
 
+	/**
+	 * Méthode de placement de pièce
+	 * @param p la pièce que l'on souhaite placer
+	 */
     public void setContent (Piece p){
         this.content=p;
         if(p!=null) {
@@ -220,6 +249,14 @@ public class Case extends StackPane {
 
     }
 
+	/**
+	 * Méthode servant à vérifier si une pièce peut attaquer une autre et ainsi lancer la fightAnimation.
+	 * @param x1 position initiale de la pièce
+	 * @param y1 position initiale de la pièce
+	 * @param x2 position finale de la pièce
+	 * @param y2 position finale de la pièce
+	 * @return vrai si on peut montrer la poèce de l'équipe adverse, faux sinon.
+	 */
     private static boolean isShowable(int x1, int y1, int x2, int y2){
         if(Board.caseBoard[x1][y1].getContent() instanceof Scout){
             if(x1==x2){
@@ -254,7 +291,7 @@ public class Case extends StackPane {
 				}
 				return true;
 			}
-            return false; //inutile
+            return false;
         }
         else{
             if((x1==x2 && Math.abs(y1-y2)==1) || (y1==y2 && Math.abs(x1-x2)==1)){

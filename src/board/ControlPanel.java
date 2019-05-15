@@ -8,9 +8,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.layout.HBox;
 import pieces.Team;
 
+/**
+ * ControlPanel est la classe qui permet l'initialisation du joueur adverse
+ */
 public class ControlPanel extends HBox {
 
-	public ControlPanel(SelectionPanel s){
+	public ControlPanel(){
 		this.setPrefHeight(80);
 		this.setPrefWidth(500);
 
@@ -24,35 +27,21 @@ public class ControlPanel extends HBox {
 		this.setMargin(team, new Insets(10));
 		team.setPromptText(" - select your Team");
 
-		Button start = new Button("Start Game !");
-		start.setVisible(false);
-		this.setMargin(start, new Insets(10));
-		start.setFocusTraversable(false);
-		start.setOnAction(e -> {
-			Main.isGameStarted=true;
-			s.setVisible(false);
-			this.setVisible(false);
-			if(Main.playerTeam==Team.Blue){
-				Main.nbCoup=1;
-				Main.player2.makeAMove();
-			}
-		});
 
-		Button Placement = new Button("Start Placement");
-		this.setMargin(Placement,new Insets(10));
-		Placement.setFocusTraversable(false);
-		Placement.setOnAction(e -> {
+
+		Button placement = new Button("Start Placement");
+		this.setMargin(placement,new Insets(10));
+		placement.setFocusTraversable(false);
+		placement.setOnAction(e -> {
 			if(combo.getValue().equals("Random AI")){
 				if(team.getValue().equals("Blue")) {
 					Main.player2 = new RandomAI(Team.Red);
 					Main.player2.init();
-					start.setVisible(true);
 					Main.playerTeam=Team.Blue;
 
 				} else if(team.getValue().equals("Red")) {
 					Main.player2 = new RandomAI(Team.Blue);
 					Main.player2.init();
-					start.setVisible(true);
 					Main.playerTeam=Team.Red;
 				}
 
@@ -60,20 +49,19 @@ public class ControlPanel extends HBox {
 				if(team.getValue().equals("Blue")) {
 					Main.player2 = new SmarterAI(Team.Red);
 					Main.player2.init();
-					start.setVisible(true);
 					Main.playerTeam=Team.Blue;
 				} else if(team.getValue().equals("Red")) {
 					Main.player2 = new SmarterAI(Team.Blue);
 					Main.player2.init();
-					start.setVisible(true);
 					Main.playerTeam=Team.Red;
 				}
 			}
-			s.setVisible(true);
+			SelectionPanel.container.setVisible(true);
+			this.setVisible(false);
 		});
 
 
-		this.getChildren().addAll(Placement, combo, team, start);
+		this.getChildren().addAll(placement, combo, team);
 	}
 
 

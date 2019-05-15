@@ -41,7 +41,7 @@ public class Main extends Application {
 
         SelectionPanel select = new SelectionPanel();
 
-        ControlPanel control = new ControlPanel(select);
+        ControlPanel control = new ControlPanel();
         MyMenuBarre menu=new MyMenuBarre(control);
         VBox top = new VBox();
         top.getChildren().addAll(menu,control);

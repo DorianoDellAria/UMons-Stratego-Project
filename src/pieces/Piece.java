@@ -3,6 +3,7 @@ package pieces;
 
 /**
  * classe parent de toute pièces du jeu
+ * chaque pièce possède un chemin d'image, un rang et une équipe
  */
 public abstract class Piece  {
 
@@ -13,6 +14,8 @@ public abstract class Piece  {
 	/**
 	 * constructeur
 	 * @param team est l'équipe à laquelle appartient la pièce
+	 * @param VALUE est le rang de la pièce
+	 * @param img est le chemin de l'image
 	 */
 	public Piece(Team team, int VALUE, String img){
 		this.team=team;
@@ -47,7 +50,7 @@ public abstract class Piece  {
 
 	/**
 	 *
-	 * @return le chemin de l'image de la pièce
+	 * @return le chemin de l'image d'une pièce
 	 */
 	public String getIMGPath(){
 		return img;

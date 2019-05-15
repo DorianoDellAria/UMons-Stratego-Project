@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class SelectionPanel extends ScrollPane {
 
 	public static int rankBuffer=-1;
-	private static HBox container = new HBox();
+	public static HBox container = new HBox();
 	public static boolean isClicked= false;
 
 	public SelectionPanel(){
@@ -26,7 +26,7 @@ public class SelectionPanel extends ScrollPane {
 		this.setContent(container);
 		this.setPrefHeight(65);
 		this.setPrefWidth(700);
-		this.setVisible(false);
+		container.setVisible(false);
 	}
 
 	private static void setButton(){
@@ -160,8 +160,20 @@ public class SelectionPanel extends ScrollPane {
 			}
 		});
 
+		Button start = new Button("Start Game !");
+		container.setMargin(start, new Insets(10));
+		start.setFocusTraversable(false);
+		start.setOnAction(e -> {
+			Main.isGameStarted=true;
+			container.setVisible(false);
+			if(Main.playerTeam==Team.Blue){
+				Main.nbCoup=1;
+				Main.player2.makeAMove();
+			}
+		});
 
-		container.getChildren().addAll(flag, spy, scout, miner, sergeant, lieutenant, captain, major, colonel, general, marshal, bomb, save, load);
+
+		container.getChildren().addAll(flag, spy, scout, miner, sergeant, lieutenant, captain, major, colonel, general, marshal, bomb, save, load, start);
 	}
 
 	public static void reset(){

@@ -36,7 +36,6 @@ public class MyMenuBarre extends MenuBar {
             SelectionPanel.reset();
             Main.nbCoup=0;
             c.setVisible(true);
-            c.getChildren().get(3).setVisible(false);
         });
         load.setOnAction(e -> {
             FileChooser fc = new FileChooser();

@@ -21,7 +21,7 @@ public abstract class AbstractMovable extends Piece implements Movable {
 	 * @param y1 y initial
 	 * @param x2 x final
 	 * @param y2 y final
-	 * @return le booléen vrai si le déplacement a été éffectué, faux sinon
+	 * @return vrai si le déplacement a été éffectué, faux sinon.
 	 */
 	@Override
 	public boolean move( int x1, int y1, int x2, int y2){
