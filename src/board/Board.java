@@ -5,9 +5,9 @@ import pieces.Obstacle;
 
 /**
  * La classe Board est la classe qui contient le plateau du jeu
- * La variable booléene isClicked est utile pour le déplacement, le déplacement d'une pièce est en 2 temps, elle permet de savoir
+ * La variable booléenne isClicked est utile pour le déplacement, le déplacement d'une pièce est en 2 temps, elle permet de savoir
  * dans quelle phase de déplacement on se trouve.
- * Les variables xBuffer et yBuffer servent également au déplacement, elles contiennent la position de départ d'une pièce qui sera utilisé
+ * Les variables xBuffer et yBuffer servent également au déplacement, elles contiennent la position de départ d'une pièce qui sera utilisée
  * dans la méthode move.
  * La classe hérite de GridPane de la librairie de javafx
  */
@@ -19,7 +19,7 @@ public class Board extends GridPane {
     public static int yBuffer;
 
     /**
-     * Constructeur du plateau. Le plateau est composé d'un tableau de Case à 2 dimension.
+     * Constructeur du plateau. Le plateau est composé d'un tableau de Case à 2 dimensions.
      * le constructeur positionne également les obstacles au milieu du plateau
      */
     public Board(){
@@ -61,7 +61,7 @@ public class Board extends GridPane {
 
 
     /**
-     * méthode d'affiche du plateau en console.
+     * méthode d'affichage du plateau en console.
      */
     public void display() {                 //Fonction d'affichage console pour debug
         for (int i = 0; i < 10; i++) {

@@ -20,14 +20,14 @@ public class MyMenuBarre extends MenuBar {
         Menu fichier =new Menu("Jeu");
         Menu option = new Menu ("Options");
         Menu aide = new Menu ("Aide");
-        Menu game = new Menu("Game");
+        Menu game = new Menu("Sauvegarde");
 
         MenuItem regles =new MenuItem("Règles");
         MenuItem exit =new MenuItem("Quitter");
         MenuItem start = new MenuItem("Start");
-        MenuItem stop = new MenuItem("Stop");
-        MenuItem save = new MenuItem("Save");
-        MenuItem load = new MenuItem("Load");
+        MenuItem stop = new MenuItem("Nouvelle partie");
+        MenuItem save = new MenuItem("Sauver");
+        MenuItem load = new MenuItem("Charger");
 
         start.setOnAction(e->Main.isGameStarted=true);
         stop.setOnAction(e->{

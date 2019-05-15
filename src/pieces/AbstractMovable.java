@@ -3,7 +3,7 @@ package pieces;
 import board.*;
 
 /**
- * classe abstraite intermédiaire parent de toutes pièces bougeable
+ * classe abstraite intermédiaire parent de toutes pièces déplaçables
  */
 public abstract class AbstractMovable extends Piece implements Movable {
 

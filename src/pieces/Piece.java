@@ -2,7 +2,7 @@ package pieces;
 
 
 /**
- * classe parent de toute pièces du jeu
+ * classe parent de toutes pièces du jeu
  * chaque pièce possède un chemin d'image, un rang et une équipe
  */
 public abstract class Piece  {
@@ -26,7 +26,7 @@ public abstract class Piece  {
 	/**
 	 * méthode de combat entre les pièces
 	 * @param defense est la pièce attaquée
-	 * @return la pièce vainqueur du combat
+	 * @return la pièce victorieuse du combat
 	 */
 	public Piece fight(Piece defense){
 		if (this.getVALUE()==defense.getVALUE()){
@@ -41,7 +41,7 @@ public abstract class Piece  {
 	}
 
 	/**
-	 * chaque pièce a une certaine valeur
+	 * chaque pièce à une certaine valeur
 	 * @return le rang de la pièce
 	 */
 	public int getVALUE(){
