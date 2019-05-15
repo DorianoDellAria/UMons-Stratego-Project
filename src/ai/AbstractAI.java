@@ -33,7 +33,7 @@ public abstract class AbstractAI implements AI {
 	public abstract void init() ;
 
 	/**
-	 * Méthode d'affiche de la pièce qui attaque une des pièces appartenant à l'utilisateur.
+	 * Méthode d'affichage de la pièce qui attaque une des pièces appartenant à l'utilisateur.
 	 * @param x1 x initial
 	 * @param y1 y initial
 	 * @param x2 x final

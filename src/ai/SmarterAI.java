@@ -177,7 +177,7 @@ public class SmarterAI extends AbstractAI implements Serializable {
 	}
 
 	/**
-	 * Méthode de dection d'une pièce ennemi à proximité.
+	 * Méthode de détection d'une pièce ennemi à proximité.
 	 * @param x coordonnée x de la pièce
 	 * @param y coordonnée y de la pièce
 	 * @return un objet Coordinates contenant la position de la pièce à proximité
