@@ -15,7 +15,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 
-
+/**
+ * La classe Main est la classe principale qui initialise les différents composants de l'application
+ */
 public class Main extends Application {
 
     public static int nbCoup=0;
@@ -31,6 +33,10 @@ public class Main extends Application {
         launch(args);
     }
 
+    /**
+     * Méthode servant au lancement de l'application, elle met en place les composants du jeu
+     * @param primaryStage la fenêtre principale du jeu
+     */
     @Override
     public void start(Stage primaryStage){
         BorderPane root = new BorderPane();
@@ -66,6 +72,9 @@ public class Main extends Application {
     }
 
 
+    /**
+     * Méthode de vérification de fin de partie.
+     */
     public static void checkGameOver() {   //à optimiser ex: retenir la place des flags pour eviter de faire un double for
         boolean redFlag = false;
         boolean blueFlag = false;
@@ -374,6 +383,11 @@ public class Main extends Application {
 
     }
 
+    /**
+     * Méthode d'affichage du vainqueur.
+     * @param displayTeam la team gagnante
+     * @param boolDisplay vrai si la partie est gagné, faux sinon.
+     */
     public static void displayVictory(Team displayTeam, Boolean boolDisplay) {
 
         if (boolDisplay) {

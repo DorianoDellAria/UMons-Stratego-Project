@@ -10,7 +10,11 @@ import javafx.scene.shape.Rectangle;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-
+/**
+ * La classe SelectionButton permet de sélectionner la pièce que l'on veut placer sur le plateau.
+ * Elle contient le nombre maximum d'une certaine pièce que l'on peut placer sur le plateau.
+ * Elle hérite de la classe StackPane de javafx
+ */
 public class SelectionButton extends StackPane {
 
 	private int maxPiece;
@@ -18,7 +22,11 @@ public class SelectionButton extends StackPane {
 	private ImageView img;
 
 
-
+	/**
+	 *
+	 * @param rank le rang de la pièce que l'on sélectionne
+	 * @param maxPiece le nombre de pièce maximum que l'on peut placer
+	 */
 	public SelectionButton(int rank, int maxPiece){
 		this.rank= rank;
 		this.maxPiece = maxPiece;

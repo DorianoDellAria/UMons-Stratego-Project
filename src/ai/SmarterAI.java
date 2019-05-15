@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
+/**
+ * La classe smarterAI est un peu plus intelligente que la RandomAI. Elles partagent tout de même une initialisation similaire.
+ */
 public class SmarterAI extends AbstractAI implements Serializable {
 
 	private Team team;
@@ -20,10 +23,17 @@ public class SmarterAI extends AbstractAI implements Serializable {
 	private Random rnd = new Random();
 	private boolean isPieceMoved =true;
 
+	/**
+	 * Constructeur.
+	 * @param team l'équipe de l'intelligence artificielle
+	 */
 	public SmarterAI(Team team){
 		this.team = team;
 	}
 
+	/**
+	 * Méthode de déplacement de SmarterAI
+	 */
 	@Override
 	public void makeAMove() {
 		Coordinates destination;
@@ -65,6 +75,10 @@ public class SmarterAI extends AbstractAI implements Serializable {
 		Main.nbCoup++;
 	}
 
+	/**
+	 * Méthode d'initialisation de SmarterAI. Elle est similaire à celle de RandomAi, à la différence que ici le drapeau
+	 * est toujours sur la dernière ligne et toujours entourée de mines.
+	 */
 	@Override
 	public void init() {
 		ArrayList<Integer> pieces= new ArrayList<>(12);
@@ -162,6 +176,12 @@ public class SmarterAI extends AbstractAI implements Serializable {
 		}
 	}
 
+	/**
+	 * Méthode de dection d'une pièce ennemi à proximité.
+	 * @param x coordonnée x de la pièce
+	 * @param y coordonnée y de la pièce
+	 * @return un objet Coordinates contenant la position de la pièce à proximité
+	 */
 	private Coordinates isPieceNear(int x, int y){
 		if(x!=0 && Board.caseBoard[x-1][y].getContent()!=null && Board.caseBoard[x-1][y].getContent().team!=this.team && Board.caseBoard[x-1][y].getContent().team!=null){
 			return new Coordinates(x-1,y);
@@ -179,6 +199,12 @@ public class SmarterAI extends AbstractAI implements Serializable {
 		return null;
 	}
 
+	/**
+	 * Renvoie pour une pièce à une position donnée une ArrayList contenant les déplacements autorisés.
+	 * @param x la coordonnée en x de la pièce
+	 * @param y la coordonnée en y de la pièce
+	 * @return une ArrayList contenant les déplacements autorisés
+	 */
 	private ArrayList<Coordinates> getAuthorisedMove(int x, int y){
 		ArrayList<Coordinates> authorisedMove =new ArrayList<>(4);
 		if(x!=0 && Board.caseBoard[x-1][y].getContent()==null){
@@ -196,12 +222,23 @@ public class SmarterAI extends AbstractAI implements Serializable {
 		return authorisedMove;
 	}
 
+	/**
+	 * Méthode servant à la sérialisation de l'intelligence artificielle
+	 * @param out un flux de d'objet en écriture
+	 * @throws IOException
+	 */
 	private void writeObject(ObjectOutputStream out) throws IOException {
 		out.writeObject(this.team);
 		out.writeObject(this.piecesPosition);
 		out.writeObject(this.isPieceMoved);
 	}
 
+	/**
+	 * Méthode servant à la sérialisation de l'intelligence artificielle
+	 * @param in un flux d'objet en lecture
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
 		this.rnd = new Random();
 		this.team = (Team)in.readObject();

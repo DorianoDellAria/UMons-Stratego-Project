@@ -2,8 +2,8 @@ package pieces;
 
 
 /**
- * classe parent de toutes pièces du jeu
- * chaque pièce possède un chemin d'image, un rang et une équipe
+ * Classe parent de toutes pièces du jeu.<br>
+ * chaque pièce possède un chemin d'image, un rang et une équipe.
  */
 public abstract class Piece  {
 
@@ -12,7 +12,6 @@ public abstract class Piece  {
 	public final Team team;
 
 	/**
-	 * constructeur
 	 * @param team est l'équipe à laquelle appartient la pièce
 	 * @param VALUE est le rang de la pièce
 	 * @param img est le chemin de l'image
@@ -24,9 +23,9 @@ public abstract class Piece  {
 	}
 
 	/**
-	 * méthode de combat entre les pièces
-	 * @param defense est la pièce attaquée
-	 * @return la pièce victorieuse du combat
+	 * Méthode de combat entre les pièces
+	 * @param defense la pièce attaquée
+	 * @return la pièce vainqueur du combat
 	 */
 	public Piece fight(Piece defense){
 		if (this.getVALUE()==defense.getVALUE()){
@@ -41,7 +40,7 @@ public abstract class Piece  {
 	}
 
 	/**
-	 * chaque pièce à une certaine valeur
+	 * Chaque pièce a une certaine valeur
 	 * @return le rang de la pièce
 	 */
 	public int getVALUE(){

@@ -14,8 +14,16 @@ import java.io.*;
 import java.util.ArrayList;
 
 
+/**
+ * La classe MyMenuBar contient différents boutons permettant la gestion du jeu.
+ * Elle hérite de la classe MenuBar de javafx
+ */
 public class MyMenuBarre extends MenuBar {
 
+    /**
+     * Le constructeur met en place les différents bouttons.
+     * @param c Le ControlPanel associé au jeu
+     */
     public MyMenuBarre(ControlPanel c) {
         Menu fichier =new Menu("Jeu");
         Menu option = new Menu ("Options");
