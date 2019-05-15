@@ -2,10 +2,9 @@ package pieces;
 
 
 public class Spy extends AbstractMovable implements Movable {
-	private String img = "./images/1.png";
 
 	public Spy(Team team){
-		super(team,1);
+		super(team,1,"./images/1.png");
 	}
 
 	/**
@@ -24,6 +23,4 @@ public class Spy extends AbstractMovable implements Movable {
 	}
 
 
-	@Override
-	public String getIMGPath(){return this.img;}
 }

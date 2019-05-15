@@ -3,14 +3,11 @@ package pieces;
 
 public class Marshal extends AbstractMovable implements Movable {
 
-	private String img = "./images/10.png";
 
 	public Marshal(Team team){
-		super(team,10);
+		super(team,10, "./images/10.png");
 	}
 
 
-	@Override
-	public String getIMGPath(){return this.img;}
 
 }

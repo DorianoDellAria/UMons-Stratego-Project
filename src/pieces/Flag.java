@@ -2,15 +2,12 @@ package pieces;
 
 
 public class Flag extends Piece{
-	private String img = "./images/0.png";
 
 	public Flag(Team team){
-		super(team,0);
+		super(team,0,"./images/0.png");
 	}
 
 
-	@Override
-	public String getIMGPath(){return this.img;}
 
 }
 

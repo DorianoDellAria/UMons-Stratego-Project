@@ -11,8 +11,8 @@ public abstract class AbstractMovable extends Piece implements Movable {
 	 * constructeur
 	 * @param team
 	 */
-	public AbstractMovable(Team team,int VALUE){
-		super(team,VALUE);
+	public AbstractMovable(Team team,int VALUE, String img){
+		super(team,VALUE, img);
 	}
 
 	/**

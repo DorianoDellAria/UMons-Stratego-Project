@@ -5,6 +5,8 @@ package pieces;
  * classe parent de toute pièces du jeu
  */
 public abstract class Piece  {
+
+	private final String img;
 	private final int VALUE;
 	public final Team team;
 
@@ -12,9 +14,10 @@ public abstract class Piece  {
 	 * constructeur
 	 * @param team est l'équipe à laquelle appartient la pièce
 	 */
-	public Piece(Team team, int VALUE){
+	public Piece(Team team, int VALUE, String img){
 		this.team=team;
 		this.VALUE= VALUE;
+		this.img = img;
 	}
 
 	/**
@@ -35,7 +38,7 @@ public abstract class Piece  {
 	}
 
 	/**
-	 *
+	 * chaque pièce a une certaine valeur
 	 * @return le rang de la pièce
 	 */
 	public int getVALUE(){
@@ -46,6 +49,8 @@ public abstract class Piece  {
 	 *
 	 * @return le chemin de l'image de la pièce
 	 */
-	public abstract String getIMGPath();
+	public String getIMGPath(){
+		return img;
+	}
 
 }
