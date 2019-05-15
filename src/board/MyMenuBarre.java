@@ -25,26 +25,17 @@ public class MyMenuBarre extends MenuBar {
      * @param c Le ControlPanel associé au jeu
      */
     public MyMenuBarre(ControlPanel c) {
-        Menu fichier =new Menu("Jeu");
+        Menu game =new Menu("Jeu");
         Menu option = new Menu ("Options");
-        Menu aide = new Menu ("Aide");
-        Menu game = new Menu("Sauvegarde");
+        Menu help = new Menu ("Aide");
+        Menu saveGame = new Menu("Sauvegarde");
 
-        MenuItem regles =new MenuItem("Règles");
+        MenuItem rules =new MenuItem("Règles");
         MenuItem exit =new MenuItem("Quitter");
-        MenuItem start = new MenuItem("Start");
-        MenuItem stop = new MenuItem("Nouvelle partie");
+        MenuItem newGame = new MenuItem("Nouvelle partie");
         MenuItem save = new MenuItem("Sauver");
         MenuItem load = new MenuItem("Charger");
 
-        start.setOnAction(e->Main.isGameStarted=true);
-        stop.setOnAction(e->{
-            Main.isGameStarted=false;
-            Board.cleanBoard();
-            SelectionPanel.reset();
-            Main.nbCoup=0;
-            c.setVisible(true);
-        });
         load.setOnAction(e -> {
             FileChooser fc = new FileChooser();
             fc.setTitle("Load game");
@@ -172,7 +163,7 @@ public class MyMenuBarre extends MenuBar {
 
 
         exit.setOnAction(event -> System.exit(0));
-        regles.setOnAction(event -> {
+        rules.setOnAction(event -> {
 
             Label text = new Label("Le Stratego se joue à 2 joueurs (un joueur avec les pièces rouges, l'autre avec les pièces bleues) sur un plateau carré de 92 cases (10 cases de côté moins 2 lacs carrés de 4 cases chacun). Chaque joueur possède 40 pièces.\n" +
                     "\n" +
@@ -229,12 +220,12 @@ public class MyMenuBarre extends MenuBar {
             secondaryLayout.getChildren().add(sp);
             secondaryWindow.show();
         });
-        game.getItems().addAll(save,load);
+        saveGame.getItems().addAll(save,load);
         option.getItems().add(exit);
-        fichier.getItems().addAll(start, stop, game);
-        aide.getItems().addAll(regles);
+        game.getItems().addAll(newGame, saveGame);
+        help.getItems().addAll(rules);
 
 
-        this.getMenus().addAll(fichier,option,aide);
+        this.getMenus().addAll(game,option,help);
     }
 }
