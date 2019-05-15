@@ -11,7 +11,7 @@ public class Scout extends AbstractMovable implements Movable{
 
 	/**
 	 * Méthode de déplacement spécifique aux éclaireurs, elle permet de se déplacer de plusieurs cases horizontalement ou verticalement
-	 * à condition qu'il n'y ai pas d'obstacles.
+	 * à condition qu'il n'y ait pas d'obstacles.
 	 * @param x1 x initial
 	 * @param y1 y initial
 	 * @param x2 x final
@@ -36,7 +36,7 @@ public class Scout extends AbstractMovable implements Movable{
 	}
 
 	/**
-	 * cette méthode sert a vérifier s'il n'y a pas d'obstacle entre le point de départ et d'arrivée de la pièce
+	 * Cette méthode sert à vérifier s'il n'y a pas d'obstacle entre le point de départ et d'arrivée de la pièce.
 	 * @param x1 x initial
 	 * @param y1 y initial
 	 * @param x2 x final

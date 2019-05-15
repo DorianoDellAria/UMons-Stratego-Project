@@ -10,12 +10,12 @@ import pieces.Team;
 
 /**
  * ControlPanel est la classe qui donne le choix entre les intelligences artificielles et le choix entre les deux équipes.
- * La classe hérite de la classe HBox de javafx
+ * La classe hérite de la classe HBox de javafx.
  */
 public class ControlPanel extends HBox {
 
 	/**
-	 * Le constructeur positionne les 2 ComboBox de choix et un bouton de validation
+	 * Le constructeur positionne les 2 ComboBox de choix et un bouton de validation.
 	 */
 	public ControlPanel(){
 		this.setPrefHeight(80);

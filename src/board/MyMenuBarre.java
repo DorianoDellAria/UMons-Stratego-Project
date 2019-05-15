@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 /**
  * La classe MyMenuBar contient différents boutons permettant la gestion du jeu.
- * Elle hérite de la classe MenuBar de javafx
+ * Elle hérite de la classe MenuBar de javafx.
  */
 public class MyMenuBarre extends MenuBar {
 

@@ -24,7 +24,7 @@ public class SelectionPanel extends ScrollPane {
 	public static boolean isClicked= false;
 
 	/**
-	 * Le constructeur initialise une ScrollBox et fixe la taille du SelectionPanel
+	 * Le constructeur initialise une ScrollBox et fixe la taille du SelectionPanel.
 	 */
 	public SelectionPanel(){
 		this.setHbarPolicy(ScrollBarPolicy.ALWAYS);
@@ -37,7 +37,7 @@ public class SelectionPanel extends ScrollPane {
 	}
 
 	/**
-	 * Méthode initialisant tous les SelectionButton
+	 * Méthode initialisant tous les SelectionButton.
 	 */
 	private static void setButton(){
 		SelectionButton flag = new SelectionButton(0,1);
@@ -187,7 +187,7 @@ public class SelectionPanel extends ScrollPane {
 	}
 
 	/**
-	 * Permet la réinitialistion du SelectionPanel lorsqu'on lance une nouvelle partie.
+	 * Permet la réinitialisation du SelectionPanel lorsqu'on lance une nouvelle partie.
 	 */
 	public static void reset(){
 		container.getChildren().clear();

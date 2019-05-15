@@ -3,7 +3,7 @@ package pieces;
 import board.*;
 
 /**
- * classe abstraite intermédiaire parent de toutes pièces bougeables
+ * Classe abstraite intermédiaire parent de toutes pièces déplaçables.
  */
 public abstract class AbstractMovable extends Piece implements Movable {
 
@@ -15,12 +15,12 @@ public abstract class AbstractMovable extends Piece implements Movable {
 	}
 
 	/**
-	 * Méthode de déplacement d'une pièce sur le plateau
+	 * Méthode de déplacement d'une pièce sur le plateau.
 	 * @param x1 x initial
 	 * @param y1 y initial
 	 * @param x2 x final
 	 * @param y2 y final
-	 * @return vrai si le déplacement a été éffectué correctement, faux sinon.
+	 * @return vrai si le déplacement a été éffectué correctement, faux sinon
 	 */
 	@Override
 	public boolean move( int x1, int y1, int x2, int y2){

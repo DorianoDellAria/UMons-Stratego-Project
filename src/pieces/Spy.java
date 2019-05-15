@@ -8,9 +8,9 @@ public class Spy extends AbstractMovable implements Movable {
 	}
 
 	/**
-	 * Méthode de combat spécifique à l'espion, il peut ainsi vaincre le maréchal
+	 * Méthode de combat spécifique à l'espion, servant à vaincre le maréchal.
 	 * @param defense est la pièce attaquée
-	 * @return la pièce vainqueur du combat
+	 * @return la pièce victorieuse du combat
 	 */
 	@Override
 	public Piece fight(Piece defense) {

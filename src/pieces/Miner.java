@@ -11,7 +11,7 @@ public class Miner extends AbstractMovable implements Movable{
 	/**
 	 * La méthode fight du démineur est spécialisée afin qu'il puisse battre la mine.
 	 * @param defense la pièce attaquée
-	 * @return la pièce vainqueur du combat
+	 * @return la pièce victorieuse du combat
 	 */
 	@Override
 	public Piece fight(Piece defense) {

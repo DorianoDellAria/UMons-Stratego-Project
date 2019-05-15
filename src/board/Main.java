@@ -16,7 +16,7 @@ import java.io.IOException;
 
 
 /**
- * La classe Main est la classe principale qui initialise les différents composants de l'application
+ * La classe Main est la classe principale qui initialise les différents composants de l'application.
  */
 public class Main extends Application {
 
@@ -34,7 +34,7 @@ public class Main extends Application {
     }
 
     /**
-     * Méthode servant au lancement de l'application, elle met en place les composants du jeu
+     * Méthode servant au lancement de l'application, elle met en place les différents composants du jeu.
      * @param primaryStage la fenêtre principale du jeu
      */
     @Override
@@ -386,7 +386,7 @@ public class Main extends Application {
     /**
      * Méthode d'affichage du vainqueur.
      * @param displayTeam la team gagnante
-     * @param boolDisplay vrai si la partie est gagné, faux sinon.
+     * @param boolDisplay vrai si la partie est gagnée, faux sinon.
      */
     public static void displayVictory(Team displayTeam, Boolean boolDisplay) {
 

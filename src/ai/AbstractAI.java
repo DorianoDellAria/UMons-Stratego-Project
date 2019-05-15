@@ -16,7 +16,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 /**
- * Classe abstraite parent de toutes intelligences artificielles fournissant la méthode fightAnimation
+ * Classe abstraite parent de toutes intelligences artificielles fournissant la méthode fightAnimation.
  */
 public abstract class AbstractAI implements AI {
 

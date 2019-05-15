@@ -32,7 +32,7 @@ public class SmarterAI extends AbstractAI implements Serializable {
 	}
 
 	/**
-	 * Méthode de déplacement de SmarterAI
+	 * Méthode de déplacement de SmarterAI.
 	 */
 	@Override
 	public void makeAMove() {
@@ -76,8 +76,8 @@ public class SmarterAI extends AbstractAI implements Serializable {
 	}
 
 	/**
-	 * Méthode d'initialisation de SmarterAI. Elle est similaire à celle de RandomAi, à la différence que ici le drapeau
-	 * est toujours sur la dernière ligne et toujours entourée de mines.
+	 * Méthode d'initialisation de SmarterAI. Elle est similaire à celle de RandomAI, à la différence qu'ici le drapeau
+	 * est toujours sur la dernière ligne et est toujours entouré de mines.
 	 */
 	@Override
 	public void init() {
@@ -177,7 +177,7 @@ public class SmarterAI extends AbstractAI implements Serializable {
 	}
 
 	/**
-	 * Méthode de détection d'une pièce ennemi à proximité.
+	 * Méthode de détection d'une pièce ennemie à proximité.
 	 * @param x coordonnée x de la pièce
 	 * @param y coordonnée y de la pièce
 	 * @return un objet Coordinates contenant la position de la pièce à proximité
@@ -223,8 +223,8 @@ public class SmarterAI extends AbstractAI implements Serializable {
 	}
 
 	/**
-	 * Méthode servant à la sérialisation de l'intelligence artificielle
-	 * @param out un flux de d'objet en écriture
+	 * Méthode servant à la sérialisation de l'intelligence artificielle.
+	 * @param out un flux d'objets en écriture
 	 * @throws IOException
 	 */
 	private void writeObject(ObjectOutputStream out) throws IOException {
@@ -234,8 +234,8 @@ public class SmarterAI extends AbstractAI implements Serializable {
 	}
 
 	/**
-	 * Méthode servant à la sérialisation de l'intelligence artificielle
-	 * @param in un flux d'objet en lecture
+	 * Méthode servant à la sérialisation de l'intelligence artificielle.
+	 * @param in un flux d'objets en lecture
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */

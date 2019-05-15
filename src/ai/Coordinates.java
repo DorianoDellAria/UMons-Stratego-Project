@@ -3,7 +3,7 @@ package ai;
 import java.io.Serializable;
 
 /**
- * La classe Coordinates est un objet stockant les coordonnées d'une pièce sur le plateau
+ * La classe Coordinates est un objet stockant les coordonnées d'une pièce sur le plateau.
  */
 public class Coordinates implements Serializable {
 
@@ -11,7 +11,7 @@ public class Coordinates implements Serializable {
 	public int y;
 
 	/**
-	 * Constructeur
+	 * Constructeur.
 	 * @param x coordonnée en x
 	 * @param y coordonnée en y
 	 */
@@ -21,8 +21,8 @@ public class Coordinates implements Serializable {
 	}
 
 	/**
-	 * permet un affichage lisible en console.
-	 * @return une chaine de caractère représentant les coordonnées en x et y
+	 * Permet un affichage lisible en console.
+	 * @return une chaine de caractères représentant les coordonnées en x et y
 	 */
 	@Override
 	public String toString(){

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * RandomAI est une intelligence artificielle complètement aléatoire, elle retient la position de ses pièces dans une ArrayList
+ * RandomAI est une intelligence artificielle complètement aléatoire, elle retient la position de ses pièces dans une ArrayList.
  */
 public class RandomAI extends AbstractAI implements Serializable {
 
@@ -33,7 +33,7 @@ public class RandomAI extends AbstractAI implements Serializable {
 
 	/**
 	 * La méthode init initialise 2 ArrayList. Une contenant la valeur des pièces à positioner, l'autre contient le nombre maximum de ce type de pièces.
-	 * Une valeur aléatoire est calculée et renvoi à un indice dans l'ArrayList pieces. En fonction de la valeur en indice, la pièce est positionnée sur le plateau.
+	 * Une valeur aléatoire est calculée et renvoie à un indice dans l'ArrayList pieces. En fonction de la valeur en indice, la pièce est positionnée sur le plateau.
 	 */
 	@Override
 	public void init(){
@@ -184,7 +184,7 @@ public class RandomAI extends AbstractAI implements Serializable {
 
 
 	/**
-	 * Méthode de debug, affiche une ArrayList de coordonnées
+	 * Méthode de debug, affiche une ArrayList de coordonnées.
 	 * @param P une ArrayList de Coordinates
 	 */
 	public static void debug(ArrayList<Coordinates> P){
@@ -193,7 +193,7 @@ public class RandomAI extends AbstractAI implements Serializable {
 	}
 
 	/**
-	 * Méthode servant à la sérialisation de l'intelligence artificielle
+	 * Méthode servant à la sérialisation de l'intelligence artificielle.
 	 * @param out un flux de d'objet en écriture
 	 * @throws IOException
 	 */
@@ -204,7 +204,7 @@ public class RandomAI extends AbstractAI implements Serializable {
 	}
 
 	/**
-	 * Méthode servant à la sérialisation de l'intelligence artificielle
+	 * Méthode servant à la sérialisation de l'intelligence artificielle.
 	 * @param in un flux d'objet en lecture
 	 * @throws IOException
 	 * @throws ClassNotFoundException
