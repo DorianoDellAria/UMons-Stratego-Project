@@ -36,6 +36,14 @@ public class MyMenuBarre extends MenuBar {
         MenuItem save = new MenuItem("Sauver");
         MenuItem load = new MenuItem("Charger");
 
+
+        newGame.setOnAction(e->{
+            Main.isGameStarted=false;
+            Board.cleanBoard();
+            SelectionPanel.reset();
+            Main.nbCoup=0;
+            c.setVisible(true);
+        });
         load.setOnAction(e -> {
             FileChooser fc = new FileChooser();
             fc.setTitle("Load game");
