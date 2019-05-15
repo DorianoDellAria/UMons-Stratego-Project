@@ -40,24 +40,26 @@ public class ControlPanel extends HBox {
 			if(combo.getValue().equals("IA aléatoire")){
 				if(team.getValue().equals("Rouge")) {
 					Main.player2 = new RandomAI(Team.Red);
-					Main.player2.init();
 					Main.playerTeam=Team.Blue;
+					Main.player2.init();
 
 				} else if(team.getValue().equals("Bleu")) {
 					Main.player2 = new RandomAI(Team.Blue);
-					Main.player2.init();
 					Main.playerTeam=Team.Red;
+					Main.player2.init();
 				}
 
 			}else if(combo.getValue().equals("IA faible")){
 				if(team.getValue().equals("Rouge")) {
 					Main.player2 = new SmarterAI(Team.Red);
-					Main.player2.init();
 					Main.playerTeam=Team.Blue;
+					Main.player2.init();
+
 				} else if(team.getValue().equals("Bleu")) {
 					Main.player2 = new SmarterAI(Team.Blue);
-					Main.player2.init();
 					Main.playerTeam=Team.Red;
+					Main.player2.init();
+
 				}
 			}
 			SelectionPanel.container.setVisible(true);

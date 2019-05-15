@@ -110,7 +110,6 @@ public class MyMenuBarre extends MenuBar {
                                     break;
 
                                 default:
-                                    System.out.println("erreur");
                                     break;
                             }
                             count++;
