@@ -131,8 +131,8 @@ public class MyMenuBarre extends MenuBar {
         save.setOnAction(e -> {
             FileChooser fc= new FileChooser();
             fc.setTitle("Save game");
-			fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("data file","*.dat"));
-			fc.setInitialDirectory(new File("./saves"));
+            fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("data file","*.dat"));
+            fc.setInitialDirectory(new File("./saves"));
             File file = fc.showSaveDialog(new Stage());
             try{
                 FileOutputStream fos = new FileOutputStream(file);

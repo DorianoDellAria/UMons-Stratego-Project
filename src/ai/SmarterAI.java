@@ -77,7 +77,7 @@ public class SmarterAI extends AbstractAI implements Serializable {
 
 	/**
 	 * Méthode d'initialisation de SmarterAI. Elle est similaire à celle de RandomAI, à la différence qu'ici le drapeau
-	 * est toujours sur la dernière ligne et est toujours entouré de mines.
+	 * est toujours sur la dernière ligne et toujours entouré de mines.
 	 */
 	@Override
 	public void init() {
