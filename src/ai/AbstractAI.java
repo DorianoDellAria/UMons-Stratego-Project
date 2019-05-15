@@ -15,14 +15,30 @@ import pieces.Team;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+/**
+ * Classe abstraite parent de toutes intelligences artificielles fournissant la méthode fightAnimation
+ */
 public abstract class AbstractAI implements AI {
 
+	/**
+	 * Méthode forçant l'intelligence artificielle à faire un déplacement.
+	 */
 	@Override
 	public abstract void makeAMove() ;
 
+	/**
+	 * Méthode de placement des pièces de l'intelligence artifficielle
+	 */
 	@Override
 	public abstract void init() ;
 
+	/**
+	 * Méthode d'affiche de la pièce qui attaque une des pièces appartenant à l'utilisateur.
+	 * @param x1 x initial
+	 * @param y1 y initial
+	 * @param x2 x final
+	 * @param y2 y final
+	 */
 	protected void fightAnimation(int x1, int y1, int x2, int y2){
 		Case.isOnAnimation=true;
 		Board.caseBoard[x1][y1].getChildren().clear();

@@ -12,6 +12,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * RandomAI est une intelligence artificielle complètement aléatoire, elle retient la position de ses pièces dans une ArrayList
+ */
 public class RandomAI extends AbstractAI implements Serializable {
 
 	private Random rnd = new Random();
@@ -19,11 +22,19 @@ public class RandomAI extends AbstractAI implements Serializable {
 	private ArrayList<Coordinates> piecesPosition = new ArrayList<>(40);
 	private boolean isPieceMoved =true;
 
+	/**
+	 * Constructeur.
+	 * @param team l'équipe de l'intelligence artificielle
+	 */
 	public RandomAI(Team team){
 		this.team = team;
 	}
 
 
+	/**
+	 * La méthode init initialise 2 ArrayList. Une contenant la valeur des pièces à positioner, l'autre contient le nombre maximum de ce type de pièces.
+	 * Une valeur aléatoire est calculée et renvoi à un indice dans l'ArrayList pieces. En fonction de la valeur en indice, la pièce est positionnée sur le plateau.
+	 */
 	@Override
 	public void init(){
 		ArrayList<Integer> pieces= new ArrayList<>(12);
@@ -111,6 +122,10 @@ public class RandomAI extends AbstractAI implements Serializable {
 
 	}
 
+	/**
+	 * Méthode de déplacement des pièces de l'intelligence artificielle. Les pièces sont sauvegardées dans une ArrayList.
+	 * Un indice aléatoire est calculé, après avoir vérifié que la pièce puisse se déplacer, la méthode déplace la pièce.
+	 */
 	@Override
 	public void makeAMove(){
 		do {
@@ -144,6 +159,12 @@ public class RandomAI extends AbstractAI implements Serializable {
 		Main.nbCoup++;
 	}
 
+	/**
+	 * Renvoie pour une pièce à une position donnée une ArrayList contenant les déplacements autorisés.
+	 * @param x la coordonnée en x de la pièce
+	 * @param y la coordonnée en y de la pièce
+	 * @return une ArrayList contenant les déplacements autorisés
+	 */
 	private ArrayList<Coordinates> getAuthorisedMove(int x, int y){
 		ArrayList<Coordinates> authorisedMove = new ArrayList<>(4);
 		if(x>0 && ((Board.caseBoard[x-1][y].getContent()==null) || (Board.caseBoard[x-1][y].getContent().team!=null && !(Board.caseBoard[x-1][y].getContent().team.equals(this.team))))){
@@ -162,17 +183,32 @@ public class RandomAI extends AbstractAI implements Serializable {
 	}
 
 
+	/**
+	 * Méthode de debug, affiche une ArrayList de coordonnées
+	 * @param P une ArrayList de Coordinates
+	 */
 	public static void debug(ArrayList<Coordinates> P){
 		for(Coordinates i : P)
 			System.out.println(i);
 	}
 
+	/**
+	 * Méthode servant à la sérialisation de l'intelligence artificielle
+	 * @param out un flux de d'objet en écriture
+	 * @throws IOException
+	 */
 	private void writeObject(ObjectOutputStream out) throws IOException {
 		out.writeObject(this.team);
 		out.writeObject(this.piecesPosition);
 		out.writeObject(this.isPieceMoved);
 	}
 
+	/**
+	 * Méthode servant à la sérialisation de l'intelligence artificielle
+	 * @param in un flux d'objet en lecture
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
 		this.rnd = new Random();
 		this.team = (Team)in.readObject();

@@ -12,13 +12,20 @@ import pieces.*;
 import java.io.*;
 import java.util.ArrayList;
 
-
+/**
+ * La classe SelectionPanel sert à placer manuellement les pièces sur le plateau, il y a tout de même un bouton permettant le placement
+ * d'une configuration sauvegardée au format "*.position".
+ * Le selectionPanel n'est affiché que lorsque l'utilisateur a choisi son équipe et son adversaire.
+ */
 public class SelectionPanel extends ScrollPane {
 
 	public static int rankBuffer=-1;
 	public static HBox container = new HBox();
 	public static boolean isClicked= false;
 
+	/**
+	 * Le constructeur initialise une ScrollBox et fixe la taille du SelectionPanel
+	 */
 	public SelectionPanel(){
 		this.setHbarPolicy(ScrollBarPolicy.ALWAYS);
 		this.setVbarPolicy(ScrollBarPolicy.NEVER);
@@ -29,6 +36,9 @@ public class SelectionPanel extends ScrollPane {
 		container.setVisible(false);
 	}
 
+	/**
+	 * Méthode initialisant tous les SelectionButton
+	 */
 	private static void setButton(){
 		SelectionButton flag = new SelectionButton(0,1);
 		SelectionButton spy = new SelectionButton(1,1);
@@ -176,6 +186,9 @@ public class SelectionPanel extends ScrollPane {
 		container.getChildren().addAll(flag, spy, scout, miner, sergeant, lieutenant, captain, major, colonel, general, marshal, bomb, save, load, start);
 	}
 
+	/**
+	 * Permet la réinitialistion du SelectionPanel lorsqu'on lance une nouvelle partie.
+	 */
 	public static void reset(){
 		container.getChildren().clear();
 		setButton();
