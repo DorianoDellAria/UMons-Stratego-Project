@@ -38,7 +38,7 @@ public class ControlPanel extends HBox {
 		placement.setFocusTraversable(false);
 		placement.setOnAction(e -> {
 			if(combo.getValue().equals("IA aléatoire")){
-				if(team.getValue().equals("Blue")) {
+				if(team.getValue().equals("Bleu")) {
 					Main.player2 = new RandomAI(Team.Red);
 					Main.player2.init();
 					Main.playerTeam=Team.Blue;
