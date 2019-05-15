@@ -3,11 +3,10 @@ package pieces;
 
 public class Miner extends AbstractMovable implements Movable{
 
-	private final int VALUE= 3;
 	private String img = "./images/3.png";
 
 	public Miner(Team team){
-		super(team);
+		super(team,3);
 	}
 
 	/**
@@ -25,10 +24,6 @@ public class Miner extends AbstractMovable implements Movable{
 		}
 	}
 
-	@Override
-	public int getVALUE(){
-		return this.VALUE;
-	}
 
 	@Override
 	public String getIMGPath(){return this.img;}

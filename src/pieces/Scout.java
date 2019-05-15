@@ -3,11 +3,10 @@ package pieces;
 import board.*;
 
 public class Scout extends AbstractMovable implements Movable{
-	private final int VALUE=2;
 	private String img = "./images/2.png";
 
 	public Scout(Team team){
-		super(team);
+		super(team,2);
 	}
 
 
@@ -78,10 +77,6 @@ public class Scout extends AbstractMovable implements Movable{
 	}
 
 
-	@Override
-	public int getVALUE(){
-		return this.VALUE;
-	}
 
 	@Override
 	public String getIMGPath(){return this.img;}

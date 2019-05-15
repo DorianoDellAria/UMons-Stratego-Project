@@ -5,13 +5,9 @@ public class Obstacle extends Piece{
 	private String img = "./images/obstacle.png";
 
 	public Obstacle() {
-		super(null);
+		super(null,-1);
 	}
 
-	@Override
-	public int getVALUE() {
-		return -1;
-	}
 
 	@Override
 	public String getIMGPath() {

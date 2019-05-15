@@ -5,14 +5,16 @@ package pieces;
  * classe parent de toute pièces du jeu
  */
 public abstract class Piece  {
+	private final int VALUE;
 	public final Team team;
 
 	/**
 	 * constructeur
 	 * @param team est l'équipe à laquelle appartient la pièce
 	 */
-	public Piece(Team team){
+	public Piece(Team team, int VALUE){
 		this.team=team;
+		this.VALUE= VALUE;
 	}
 
 	/**
@@ -36,7 +38,9 @@ public abstract class Piece  {
 	 *
 	 * @return le rang de la pièce
 	 */
-	public abstract int getVALUE();
+	public int getVALUE(){
+		return VALUE;
+	}
 
 	/**
 	 *
