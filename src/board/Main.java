@@ -40,7 +40,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage){
         BorderPane root = new BorderPane();
-        primaryStage.setScene(new Scene(root,1100,800));
+        primaryStage.setScene(new Scene(root,1200,800));
         primaryStage.setTitle("Stratego");
 
         Board board = new Board();

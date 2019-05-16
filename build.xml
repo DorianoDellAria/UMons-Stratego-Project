@@ -5,12 +5,18 @@
         <javac  includeantruntime = "false" srcdir = "./src" destdir = "./out" classpath="./lib/junit-4.12.jar"/>
     </target>
     <target name = "run" depends ="build">
-        <java classname = "board.Main" classpath = "./out : ./lib/jfxrt.jar"/>  <!-- attention jfxrt openjdk-->
+        <java classname = "board.Main" classpath = "./out : ./lib/jfxrt_linux.jar"/>
     </target>
     <target name="clean">
         <delete dir="out"/>
     </target>
     <target name="test" depends="build">
-        <java classname="Test" classpath="./out : ./lib/hamcrest-core-1.3.jar : ./lib/junit-4.12.jar : ./lib/jfxrt.jar"/>  <!--attention jfxrt + junit open jdk-->
+        <junit printsummary="yes" showoutput="yes">
+            <test name="Test"/>
+            <classpath>
+                <pathelement location="./lib/junit-4.12.jar"/>
+                <pathelement location="./out"/>
+            </classpath>
+        </junit>
     </target>
 </project>

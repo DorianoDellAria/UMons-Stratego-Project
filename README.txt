@@ -9,3 +9,9 @@ Vous trouverez dans cette archive :
 - le fichier "build.xml" permettant de lancer le jeu avec "ant"
 - le rapport de projet
 - l'énoncé de projet
+
+Les commandes sont :
+- ant build : crée un dossier "out" et compile le code
+- ant run : lance l'application
+- ant clean : suprimme le dossier "out" avec les fichiers compilés
+- ant test : lance les tests unitaires
